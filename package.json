@@ -1,0 +1,27 @@
+{
+  "name": "chmod.info",
+  "version": "1.0.0",
+  "description": "A chmod calculator",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viveks7/chmod.info.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viveks7/chmod.info/issues"
+  },
+  "homepage": "https://github.com/viveks7/chmod.info#readme",
+  "dependencies": {
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
