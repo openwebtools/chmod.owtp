@@ -1,9 +1,10 @@
 import React from 'react';
+import MainLayout from '../src/layouts/main';
 
 const Index = () => (
-  <div>
+  <MainLayout>
     <p>Chmod Calculator</p>
-  </div>
+  </MainLayout>
 );
 
 export default Index;
