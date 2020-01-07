@@ -1,24 +1,31 @@
-import React from 'react'
-import NextDocument from 'next/document'
-import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
-import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles'
+import React from 'react';
+import NextDocument from 'next/document';
+import {ServerStyleSheet as StyledComponentSheets} from 'styled-components';
+import {ServerStyleSheets as MaterialUiServerStyleSheets} from '@material-ui/styles';
 
+/**
+ * Document.
+ */
 export default class Document extends NextDocument {
-  static async getInitialProps (ctx) {
-    const styledComponentSheet = new StyledComponentSheets()
-    const materialUiSheets = new MaterialUiServerStyleSheets()
-    const originalRenderPage = ctx.renderPage
+  /**
+   * Gets the initial props.
+   * @param {any} ctx Context obj.
+   */
+  static async getInitialProps(ctx) {
+    const styledComponentSheet = new StyledComponentSheets();
+    const materialUiSheets = new MaterialUiServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props =>
+          enhanceApp: (App: any) => (props: JSX.IntrinsicAttributes) =>
             styledComponentSheet.collectStyles(
-              materialUiSheets.collect(<App {...props} />),
+                materialUiSheets.collect(<App {...props} />),
             ),
-        })
+        });
 
-      const initialProps = await NextDocument.getInitialProps(ctx)
+      const initialProps = await NextDocument.getInitialProps(ctx);
 
       return {
         ...initialProps,
@@ -29,9 +36,9 @@ export default class Document extends NextDocument {
             {styledComponentSheet.getStyleElement()}
           </React.Fragment>,
         ],
-      }
+      };
     } finally {
-      styledComponentSheet.seal()
+      styledComponentSheet.seal();
     }
   }
 }
