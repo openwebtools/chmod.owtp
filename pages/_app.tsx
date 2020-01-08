@@ -2,11 +2,13 @@ import React from 'react';
 import NextApp from 'next/app';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MaterialTheme from '../src/theme';
+import Router from 'next/router';
+import withGA from 'next-ga';
 
 /**
  * Chmod App.
  */
-export default class ChmodApp extends NextApp {
+class ChmodApp extends NextApp {
   /**
    * React Lifecycle callback.
    */
@@ -42,3 +44,5 @@ export default class ChmodApp extends NextApp {
     );
   }
 }
+
+export default withGA('UA-155159093-2', Router)(ChmodApp);

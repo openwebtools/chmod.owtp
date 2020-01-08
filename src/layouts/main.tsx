@@ -16,7 +16,7 @@ const useStyle = makeStyles({
 const MainLayout = (props: any) => {
   const styles = useStyle({});
   return (
-    <Container maxWidth="sm" classes={{root: styles.root}}>
+    <Container maxWidth="md" classes={{root: styles.root}}>
       <div className="content">{props.children}</div>
       <Footer/>
       <style jsx>{`

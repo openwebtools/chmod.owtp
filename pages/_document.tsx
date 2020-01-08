@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, {Main, NextScript} from 'next/document';
+import Document, {Main, NextScript, Head} from 'next/document';
 import {ServerStyleSheets as MaterialUiServerStyleSheets} from '@material-ui/styles';
 import Header from '../src/components/header';
 
@@ -14,7 +14,9 @@ export default class AppDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Header/>
+        <Head>
+          <Header/>
+        </Head>
         <body>
           <Main />
           <NextScript />
