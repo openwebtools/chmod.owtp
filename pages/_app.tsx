@@ -2,7 +2,6 @@ import React from 'react';
 import NextApp from 'next/app';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MaterialTheme from '../src/theme';
-import Header from '../src/components/header';
 
 /**
  * Chmod App.
@@ -28,7 +27,6 @@ export default class ChmodApp extends NextApp {
 
     return (
       <React.Fragment>
-        <Header/>
         <MaterialTheme>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />

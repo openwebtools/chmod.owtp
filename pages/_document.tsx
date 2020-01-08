@@ -1,44 +1,65 @@
 import React from 'react';
-import NextDocument from 'next/document';
-import {ServerStyleSheet as StyledComponentSheets} from 'styled-components';
+import Document, {Main, NextScript} from 'next/document';
 import {ServerStyleSheets as MaterialUiServerStyleSheets} from '@material-ui/styles';
+import Header from '../src/components/header';
 
 /**
  * Document.
  */
-export default class Document extends NextDocument {
+export default class AppDocument extends Document {
   /**
-   * Gets the initial props.
-   * @param {any} ctx Context obj.
+   * Render function.
+   * @return {Element} Rendered Document.
    */
-  static async getInitialProps(ctx) {
-    const styledComponentSheet = new StyledComponentSheets();
-    const materialUiSheets = new MaterialUiServerStyleSheets();
-    const originalRenderPage = ctx.renderPage;
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App: any) => (props: JSX.IntrinsicAttributes) =>
-            styledComponentSheet.collectStyles(
-                materialUiSheets.collect(<App {...props} />),
-            ),
-        });
-
-      const initialProps = await NextDocument.getInitialProps(ctx);
-
-      return {
-        ...initialProps,
-        styles: [
-          <React.Fragment key="styles">
-            {initialProps.styles}
-            {materialUiSheets.getStyleElement()}
-            {styledComponentSheet.getStyleElement()}
-          </React.Fragment>,
-        ],
-      };
-    } finally {
-      styledComponentSheet.seal();
-    }
+  render() {
+    return (
+      <html lang="en">
+        <Header/>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>);
   }
 }
+
+AppDocument.getInitialProps = async (ctx) => {
+  // Resolution order
+  //
+  // On the server:
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. document.getInitialProps
+  // 4. app.render
+  // 5. page.render
+  // 6. document.render
+  //
+  // On the server with error:
+  // 1. document.getInitialProps
+  // 2. app.render
+  // 3. page.render
+  // 4. document.render
+  //
+  // On the client
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. app.render
+  // 4. page.render
+
+  // Render app and page and get the context of the page with collected side effects.
+  const sheets = new MaterialUiServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App: any) => (props: any) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    // Styles fragment is rendered after the app and page rendering finish.
+    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+  };
+};
