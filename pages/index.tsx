@@ -1,8 +1,12 @@
 import React from 'react';
 import MainLayout from '../src/layouts/main';
 import ContentLayout from '../src/layouts/content';
-import {Typography, makeStyles, Tabs, Tab, AppBar} from '@material-ui/core';
+import {Typography, makeStyles, Tabs, Tab, AppBar, Hidden} from '@material-ui/core';
 import TabPanel from '../src/components/tabpanel';
+import AppsIcon from '@material-ui/icons/Apps';
+import CodeIcon from '@material-ui/icons/Code';
+import SubjectIcon from '@material-ui/icons/Subject';
+import HistoryIcon from '@material-ui/icons/History';
 
 const useStyle = makeStyles({
   'header': {
@@ -42,18 +46,34 @@ const Index = () => {
       <ContentLayout>
         <Typography variant="h5" classes={{root: styles.header}} color="primary">chmod.info</Typography>
         <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={handleChange}
-            centered
-            aria-label="chmod options">
-            <Tab label="calculator" {...a11yProps(0)} />
-            <Tab label="syntax" {...a11yProps(1)}/>
-            <Tab label="man" {...a11yProps(2)}/>
-            <Tab label="history" {...a11yProps(3)}/>
-          </Tabs>
+          <Hidden only='xs'>
+            <Tabs
+              value={value}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChange}
+              centered
+              aria-label="chmod options">
+              <Tab label="calculator" {...a11yProps(0)} />
+              <Tab label="syntax" {...a11yProps(1)} />
+              <Tab label="man" {...a11yProps(2)} />
+              <Tab label="history" {...a11yProps(3)} />
+            </Tabs>
+          </Hidden>
+          <Hidden smUp>
+            <Tabs
+              value={value}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChange}
+              centered
+              aria-label="chmod options">
+              <Tab icon={<AppsIcon />} {...a11yProps(0)} />
+              <Tab icon={<CodeIcon />} {...a11yProps(1)} />
+              <Tab icon={<SubjectIcon />} {...a11yProps(2)} />
+              <Tab icon={<HistoryIcon />} {...a11yProps(3)} />
+            </Tabs>
+          </Hidden>
         </AppBar>
         <TabPanel value={value} index={0}>
           Coming Soon

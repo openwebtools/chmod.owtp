@@ -21,6 +21,7 @@
   "homepage": "https://github.com/viveks7/chmod.info#readme",
   "dependencies": {
     "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
     "@types/styled-components": "^4.4.2",
     "next": "^9.1.7",
     "next-ga": "^2.3.4",
