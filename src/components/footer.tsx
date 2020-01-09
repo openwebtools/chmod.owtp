@@ -7,7 +7,6 @@ const Footer = () => {
       <Typography variant="body2" color="inherit" align="center">
         {'Open Web Tools Project © '}
         {new Date().getFullYear()}
-        {'.'}
       </Typography>
       <style jsx>{`
         .footer {

@@ -35,9 +35,9 @@ class ChmodApp extends NextApp {
           <Component {...pageProps} />
         </MaterialTheme>
         <style jsx global>{`
-        html, body, #app, #__next {
-          height: 100%
-        }
+          html, body, #app, #__next {
+            height: 100%
+          }
         `}
         </style>
       </React.Fragment>

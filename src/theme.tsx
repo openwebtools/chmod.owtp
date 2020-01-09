@@ -16,10 +16,10 @@ function MaterialTheme(_props: any) {
         createMuiTheme({
           palette: {
             primary: {
-              main: '#556cd6',
+              main: '#4caf50',
             },
             secondary: {
-              main: '#19857b',
+              main: '#388e3c',
             },
             error: {
               main: red.A400,
