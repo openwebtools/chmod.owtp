@@ -9,7 +9,6 @@ import React from 'react';
  * @return {JSX.Element} Material Theme.
  */
 function MaterialTheme(_props: any) {
-
   const theme = React.useMemo(
       () =>
         createMuiTheme({

@@ -15,6 +15,7 @@ export default class AppDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <title>Chmod Info</title>
           <Header/>
         </Head>
         <body>
