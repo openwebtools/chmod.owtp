@@ -9,7 +9,6 @@ const Calculator = () => {
   return (
     <div>
       <SubjectHeader {...header}/>
-      <p>Coming soon</p>
     </div>
   );
 };
