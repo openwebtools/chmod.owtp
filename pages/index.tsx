@@ -7,6 +7,10 @@ import AppsIcon from '@material-ui/icons/Apps';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
 import HistoryIcon from '@material-ui/icons/History';
+import Calculator from './caclulator';
+import Syntax from './syntax';
+import ExamplePage from './examples';
+import History from './history';
 
 const useStyle = makeStyles({
   'header': {
@@ -46,7 +50,7 @@ const Index = () => {
       <ContentLayout>
         <Typography variant="h5" classes={{root: styles.header}} color="primary">chmod.info</Typography>
         <AppBar position="static" color="default">
-          <Hidden only='xs'>
+          <Hidden only='xs' implementation="css">
             <Tabs
               value={value}
               indicatorColor="primary"
@@ -60,7 +64,7 @@ const Index = () => {
               <Tab label="history" {...a11yProps(3)} />
             </Tabs>
           </Hidden>
-          <Hidden smUp>
+          <Hidden smUp implementation="css">
             <Tabs
               value={value}
               indicatorColor="primary"
@@ -76,16 +80,16 @@ const Index = () => {
           </Hidden>
         </AppBar>
         <TabPanel value={value} index={0}>
-          Coming Soon
+          <Calculator/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Coming Soon
+          <Syntax/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Coming Soon
+          <ExamplePage/>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Coming Soon
+          <History/>
         </TabPanel>
       </ContentLayout>
     </MainLayout>

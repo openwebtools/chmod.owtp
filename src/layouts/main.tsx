@@ -10,6 +10,8 @@ const useStyle = makeStyles({
     'min-height': '100%',
     'height': '100%',
     'width': '100%',
+    'padding-top': '20px',
+    'padding-bottomn': '20px',
   },
 });
 
