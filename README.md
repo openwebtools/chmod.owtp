@@ -1,2 +1,2 @@
-# chmod.info
+# chmod.owtp
 A chmod calculator 
