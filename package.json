@@ -39,6 +39,6 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   }
 }
