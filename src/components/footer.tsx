@@ -1,12 +1,14 @@
 import React from 'react';
-import {Typography} from '@material-ui/core';
+import {Typography, Link} from '@material-ui/core';
 
 const Footer = () => {
   return (
     <div className="footer">
       <Typography variant="body2" color="inherit" align="center">
-        {'Open Web Tools Project © '}
-        {new Date().getFullYear()}
+        <Link href="https://openweb.tools">
+          {'Open Web Tools © '}
+          {new Date().getFullYear()}
+        </Link>
       </Typography>
       <style jsx>{`
         .footer {

@@ -1,6 +1,6 @@
 import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
-import {TableContainer, TableHead, TableRow, TableCell, TableBody, Table, makeStyles, Paper, Checkbox, Box} from '@material-ui/core';
+import {TableContainer, TableHead, TableRow, TableCell, TableBody, Table, makeStyles, Checkbox, Box} from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {

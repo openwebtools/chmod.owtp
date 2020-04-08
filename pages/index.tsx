@@ -48,7 +48,7 @@ const Index = () => {
   return (
     <MainLayout>
       <ContentLayout>
-        <Typography variant="h5" classes={{root: styles.header}} color="primary">chmod.info</Typography>
+        <Typography variant="h5" classes={{root: styles.header}} color="primary">chmod calculator</Typography>
         <AppBar position="static" color="default">
           <Hidden only='xs' implementation="css">
             <Tabs
