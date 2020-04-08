@@ -14,13 +14,13 @@ function MaterialTheme(_props: any) {
         createMuiTheme({
           palette: {
             primary: {
-              main: '#4caf50',
+              main: '#1c1c1e',
             },
             secondary: {
-              main: '#388e3c',
+              main: '#f2f2f7',
             },
             error: {
-              main: red.A40
+              main: red.A400,
             },
             type: 'dark',
           },
