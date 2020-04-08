@@ -1,6 +1,7 @@
 import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
 import {TableContainer, TableHead, TableRow, TableCell, TableBody, Table, makeStyles, Checkbox, Box} from '@material-ui/core';
+import PermissionInput from '../src/components/permissionInput';
 
 const useStyles = makeStyles({
   table: {
@@ -72,6 +73,7 @@ const Calculator = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <PermissionInput/>
       </Box>
     </div>
   );
