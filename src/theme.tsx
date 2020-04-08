@@ -20,7 +20,7 @@ function MaterialTheme(_props: any) {
               main: '#388e3c',
             },
             error: {
-              main: red.A400,
+              main: red.A40
             },
             type: 'dark',
           },
