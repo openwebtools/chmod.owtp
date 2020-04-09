@@ -1,5 +1,6 @@
 import React from 'react';
 import NextApp from 'next/app';
+import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MaterialTheme from '../src/theme';
 import Router from 'next/router';
@@ -31,6 +32,9 @@ class ChmodApp extends NextApp {
       <React.Fragment>
         <MaterialTheme>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <Head>
+            <title>chmod calculator | Open Web Tools</title>
+          </Head>
           <CssBaseline />
           <Component {...pageProps} />
         </MaterialTheme>

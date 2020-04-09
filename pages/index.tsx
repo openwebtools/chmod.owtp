@@ -11,6 +11,7 @@ import Calculator from './caclulator';
 import Syntax from './syntax';
 import ExamplePage from './examples';
 import History from './history';
+import CalcIcon from '../src/components/calcIcon';
 
 const useStyle = makeStyles({
   'header': {
@@ -72,7 +73,7 @@ const Index = () => {
               onChange={handleChange}
               centered
               aria-label="chmod options">
-              <Tab icon={<AppsIcon />} {...a11yProps(0)} />
+              <Tab icon={<CalcIcon />} {...a11yProps(0)} />
               <Tab icon={<CodeIcon />} {...a11yProps(1)} />
               <Tab icon={<SubjectIcon />} {...a11yProps(2)} />
               <Tab icon={<HistoryIcon />} {...a11yProps(3)} />

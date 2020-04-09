@@ -3,7 +3,7 @@ import {makeStyles, createStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
-import CopyIcon from './CopyIcon';
+import CopyIcon from './copyIcon';
 
 const useStyles = makeStyles(() =>
   createStyles({
