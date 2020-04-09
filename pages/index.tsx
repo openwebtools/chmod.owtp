@@ -1,15 +1,14 @@
 import React from 'react';
-import MainLayout from '../src/layouts/main';
-import ContentLayout from '../src/layouts/content';
+import MainLayout from '../src/layouts/mainLayout';
+import ContentLayout from '../src/layouts/contentLayout';
 import {Typography, makeStyles, Tabs, Tab, AppBar, Hidden} from '@material-ui/core';
-import TabPanel from '../src/components/tabpanel';
-import AppsIcon from '@material-ui/icons/Apps';
+import TabPanel from '../src/components/tabPanel';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
 import HistoryIcon from '@material-ui/icons/History';
-import Calculator from './caclulator';
+import Calculator from './calculator';
 import Syntax from './syntax';
-import ExamplePage from './examples';
+import ExamplePage from './examplePage';
 import History from './history';
 import CalcIcon from '../src/components/calcIcon';
 
@@ -37,7 +36,7 @@ function a11yProps(index: number) {
     'id': `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
   };
-};
+}
 
 const Index = () => {
   const [value, setValue] = React.useState(0);
