@@ -1,5 +1,5 @@
 {
-  "name": "chmod.info",
+  "name": "chmod.owtp",
   "version": "1.0.0",
   "description": "A chmod calculator",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viveks7/chmod.info.git"
+    "url": "git+https://github.com/openwebtools/chmod.owtp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/viveks7/chmod.info/issues"
+    "url": "https://github.com/openwebtools/chmod.owtp/issues"
   },
-  "homepage": "https://github.com/viveks7/chmod.info#readme",
+  "homepage": "https://github.com/openwebtools/chmod.owtp#readme",
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
