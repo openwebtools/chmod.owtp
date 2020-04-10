@@ -89,7 +89,7 @@ export default class PermissionService {
     } else if(combinedString.match(/-/).length == combinedString.length) {
       return 'a-rwx';
     } else {
-      return `u=${owner},g=${group},a=${all}`;
+      return `u+${owner},g+${group},o+${all}`.replace('-', '');
     }
   }
 }
