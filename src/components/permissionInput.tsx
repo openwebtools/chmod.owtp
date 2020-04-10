@@ -26,15 +26,16 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const PermissionInput = () => {
+const PermissionInput = (props) => {
   const classes = useStyles({});
 
   return (
     <Paper component="form" className={classes.root} elevation={0}>
       <InputBase
         className={classes.input}
-        placeholder="Search Google Maps"
-        inputProps={{'aria-label': 'search google maps'}}
+        placeholder="Permission value will be displayed here."
+        inputProps={{'aria-label': 'show permission value'}}
+        value={props.permissionValue}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <CopyIcon />

@@ -23,22 +23,24 @@ const Calculator = () => {
     subHeader: 'An easy to use, dead simple chmod calculator',
   };
 
-  let permissionValue: string = '';
+  const [permissionString, setPermissionString] = React.useState('');
 
-  const perms: PermissionModel = {
+  const classes = useStyles({});
+  
+  const [perms, setPerms] = React.useState<PermissionModel>({
     owner: [0, 0, 0],
     group: [0, 0, 0],
     all: [0, 0, 0,],
     setgid: false,
     setuid: false,
     stickybit: false
-  };
-
-  const classes = useStyles({});
+  });
 
   const handlePermChange = (event, index: number) => {
-    perms[event.target.name][index] = event.target.checked;
-    permissionValue = permissionService.computeNumeric(perms);
+    var newPerms = {...perms};
+    newPerms[event.target.name][index] = Number(event.target.checked);
+    setPermissionString(permissionService.computeNumeric(newPerms));
+    setPerms(newPerms);
   };
 
   return (
@@ -62,10 +64,10 @@ const Calculator = () => {
                   <Checkbox checked={Boolean(perms.owner[0])} name="owner" onChange={(e) => handlePermChange(e, 0)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[0])} name="group" onChange={(e) => handlePermChange(e, 0)}/>
+                  <Checkbox checked={Boolean(perms.group[0])} name="group" onChange={(e) => handlePermChange(e, 0)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[0])} name="all" onChange={(e) => handlePermChange(e, 0)}/>
+                  <Checkbox checked={Boolean(perms.all[0])} name="all" onChange={(e) => handlePermChange(e, 0)}/>
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -74,10 +76,10 @@ const Calculator = () => {
                   <Checkbox checked={Boolean(perms.owner[1])} name="owner" onChange={(e) => handlePermChange(e, 1)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[1])} name="group" onChange={(e) => handlePermChange(e, 1)}/>
+                  <Checkbox checked={Boolean(perms.group[1])} name="group" onChange={(e) => handlePermChange(e, 1)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[1])} name="all" onChange={(e) => handlePermChange(e, 1)}/>
+                  <Checkbox checked={Boolean(perms.all[1])} name="all" onChange={(e) => handlePermChange(e, 1)}/>
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -86,16 +88,16 @@ const Calculator = () => {
                   <Checkbox checked={Boolean(perms.owner[2])} name="owner" onChange={(e) => handlePermChange(e, 2)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[2])} name="group" onChange={(e) => handlePermChange(e, 2)}/>
+                  <Checkbox checked={Boolean(perms.group[2])} name="group" onChange={(e) => handlePermChange(e, 2)}/>
                 </TableCell>
                 <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[2])} name="all" onChange={(e) => handlePermChange(e, 2)}/>
+                  <Checkbox checked={Boolean(perms.all[2])} name="all" onChange={(e) => handlePermChange(e, 2)}/>
                 </TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
-        <PermissionInput/>
+        <PermissionInput permissionValue={permissionString}/>
       </Box>
     </div>
   );

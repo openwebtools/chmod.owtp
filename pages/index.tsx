@@ -2,7 +2,7 @@ import React from 'react';
 import MainLayout from '../src/layouts/mainLayout';
 import ContentLayout from '../src/layouts/contentLayout';
 import {Typography, makeStyles, Tabs, Tab, AppBar, Hidden} from '@material-ui/core';
-import TabPanel from '../src/components/tabpanel';
+import TabPanel from '../src/components/tabPanel';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
 import HistoryIcon from '@material-ui/icons/History';
