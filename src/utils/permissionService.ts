@@ -13,7 +13,11 @@ export default class PermissionService {
     const owner = this.binaryToNumber(this.arrayToString(value.owner));
     const all = this.binaryToNumber(this.arrayToString(value.all));
     const group = this.binaryToNumber(this.arrayToString(value.group));
-    return this.arrayToString([owner, group, all]);
+    const special = this.computeNumericalSpecialPermissions(value.setuid, value.setgid, value.stickybit);
+    var numeric = this.arrayToString([special, owner, group, all]);
+
+    // replace the leading 0 value (If special permissions are not set).
+    return numeric.replace(/^0+/, '');
   }
 
   /**
@@ -21,9 +25,18 @@ export default class PermissionService {
    * @param value Permission binary values.
    */
   public computeSymbolicDisplay(value: PermissionModel): string {
-    const owner = this.binaryToSymbolic(value.owner);
-    const group = this.binaryToSymbolic(value.group);
-    const all = this.binaryToSymbolic(value.all);
+    let owner = this.binaryToSymbolic(value.owner);
+    if(value.setuid) {
+      owner = owner.replace('x', 's');
+    }
+    let group = this.binaryToSymbolic(value.group);
+    if(value.setgid) {
+      group = group.replace('x', 's');
+    }
+    let all = this.binaryToSymbolic(value.all);
+    if(value.stickybit) {
+      all = all.replace('x', 't');
+    }
     return this.arrayToString([owner, group, all]);
   }
 
@@ -32,10 +45,23 @@ export default class PermissionService {
    * @param value Permission binary values.
    */
   public computeSymbolicCommand(value: PermissionModel): string {
-    const owner = this.binaryToSymbolic(value.owner);
-    const group = this.binaryToSymbolic(value.group);
+    let owner = this.binaryToSymbolic(value.owner);
+    if(value.setuid) {
+      owner += 's';
+    }
+    let group = this.binaryToSymbolic(value.group);
+    if(value.setgid) {
+      group += 's';
+    }
     const all = this.binaryToSymbolic(value.all);
-    return this.mergeSymbolicCommands(owner, group, all);
+
+    let result = this.mergeSymbolicCommands(owner, group, all);
+
+    if(value.stickybit) {
+      result += ',+t';
+    }
+
+    return result;
   }
 
   /**
@@ -91,5 +117,15 @@ export default class PermissionService {
     } else {
       return `u+${owner},g+${group},o+${all}`.replace('-', '');
     }
+  }
+
+  /**
+   * Compute the special permission numberical value.
+   * @param setuid sets the user executable flag.
+   * @param setgid sets the group executable flag.
+   * @param stickybit sets the sticky bit.
+   */
+  private computeNumericalSpecialPermissions(setuid: boolean, setgid: boolean, stickybit: boolean): number {
+    return this.binaryToNumber(this.arrayToString([Number(setuid), Number(setgid), Number(stickybit)]))
   }
 }
