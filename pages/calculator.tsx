@@ -2,6 +2,7 @@ import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
 import {TableContainer, TableHead, TableRow, TableCell, TableBody, Table, makeStyles, Checkbox, Box} from '@material-ui/core';
 import PermissionInput from '../src/components/permissionInput';
+import PermissionService from '../src/utils/permissionService';
 
 const useStyles = makeStyles({
   table: {
@@ -11,6 +12,8 @@ const useStyles = makeStyles({
     marginTop: '20px',
   },
 });
+
+const permissionService = new PermissionService();
 
 const Calculator = () => {
   const header = {

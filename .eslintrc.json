@@ -35,5 +35,9 @@
                  "ignoreStrings": false,
                  "ignoreTemplateLiterals": false
                }]
+               ,
+        "rules": {
+            "linebreak-style": 0
+        }
     }
 }
