@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/viveks7/chmod.info#readme",
   "dependencies": {
-    "@material-ui/core": "^4.8.3",
+    "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
     "@types/styled-components": "^4.4.2",
     "next": "^9.3.4",
