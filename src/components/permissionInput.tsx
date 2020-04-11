@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -6,6 +6,7 @@ import CopyIcon from './copyIcon';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Hidden from '@material-ui/core/Hidden';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -64,14 +65,31 @@ const PermissionInput = (props) => {
 
   return (
     <Paper className={classes.root} elevation={0}>
-      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert onClose={handleClose} variant="filled" severity="success">
-          Result Copied!
+
+      <Hidden only='xs' >
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <Alert onClose={handleClose} variant="filled" severity="success">
+            Result Copied!
         </Alert>
-      </Snackbar>
-      <Typography variant="h6" className={classes.label} >
-        {props.permissionValue}
-      </Typography>
+        </Snackbar>
+        <Typography variant="h4" className={classes.label} >
+          {props.permissionValue}
+        </Typography>
+      </Hidden>
+
+      <Hidden smUp >
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+          <Alert onClose={handleClose} variant="filled" severity="success">
+            Result Copied!
+        </Alert>
+        </Snackbar>
+        <Typography variant="h6" className={classes.label} >
+          {props.permissionValue}
+        </Typography>
+      </Hidden>
+
       <IconButton className={classes.iconButton} aria-label="copy value" onClick={handleClick}>
         <CopyIcon />
       </IconButton>
