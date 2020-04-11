@@ -20,10 +20,10 @@ const Calculator = () => {
 
   const header = {
     header: 'chmod calculator',
-    subHeader: 'An easy to use, dead simple chmod calculator',
+    subHeader: 'An easy to use, simple chmod calculator',
   };
 
-  const [permissionString, setPermissionString] = React.useState('');
+  const [permissionString, setPermissionString] = React.useState('000');
 
   const classes = useStyles({});
   
