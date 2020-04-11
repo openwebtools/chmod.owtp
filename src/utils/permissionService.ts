@@ -14,10 +14,16 @@ export default class PermissionService {
     const all = this.binaryToNumber(this.arrayToString(value.all));
     const group = this.binaryToNumber(this.arrayToString(value.group));
     const special = this.computeNumericalSpecialPermissions(value.setuid, value.setgid, value.stickybit);
-    var numeric = this.arrayToString([special, owner, group, all]);
+    
+    let numeric: string;
+    if(special === 0) {
+      numeric = this.arrayToString([owner, group, all]);
+    } else {
+      numeric = this.arrayToString([special, owner, group, all])
+    }
 
     // replace the leading 0 value (If special permissions are not set).
-    return numeric.replace(/^0+/, '');
+    return numeric;
   }
 
   /**

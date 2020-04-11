@@ -1,43 +1,79 @@
-import React from 'react';
-import {makeStyles, createStyles} from '@material-ui/core/styles';
+import React, { useRef } from 'react';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import CopyIcon from './copyIcon';
+import Typography from '@material-ui/core/Typography';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
+      padding: '16px 16px 10px 16px',
+      display: 'flex'
     },
-    input: {
-      marginLeft: 1,
-      flex: 1,
+    label: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      minWidth: '85%',
+      textAlign: 'center',
+      paddingLeft: '15%'
     },
     iconButton: {
       padding: 10,
     },
-    divider: {
-      height: 28,
-      margin: 4,
-    },
+    hiddenText: {
+      display: 'none'
+    }
   }),
 );
 
 const PermissionInput = (props) => {
   const classes = useStyles({});
+  const [open, setOpen] = React.useState(false);
+  const textAreaRef = useRef(null);
+
+  const handleClick = (e) => {
+    setOpen(true);
+    copyToClipboard(props.permissionValue);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const copyToClipboard = (value: string) => {
+    var input = document.createElement('textarea');
+    input.innerHTML = value;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+  };
+
 
   return (
-    <Paper component="form" className={classes.root} elevation={0}>
-      <InputBase
-        className={classes.input}
-        placeholder="Permission value will be displayed here."
-        inputProps={{'aria-label': 'show permission value'}}
-        value={props.permissionValue}
-      />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search">
+    <Paper className={classes.root} elevation={0}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert onClose={handleClose} variant="filled" severity="success">
+          Result Copied!
+        </Alert>
+      </Snackbar>
+      <Typography variant="h6" className={classes.label} >
+        {props.permissionValue}
+      </Typography>
+      <IconButton className={classes.iconButton} aria-label="copy value" onClick={handleClick}>
         <CopyIcon />
       </IconButton>
     </Paper>
