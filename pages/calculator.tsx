@@ -3,7 +3,7 @@ import SubjectHeader from '../src/components/subjectHeader';
 import {TableContainer, TableHead, TableRow, TableCell, TableBody, Table, makeStyles, Checkbox, Box} from '@material-ui/core';
 import PermissionInput from '../src/components/permissionInput';
 import PermissionService from '../src/utils/permissionService';
-import { PermissionModel } from '../src/models/permissionModel';
+import { PermissionModel, PermissionLoggingOptions } from '../src/models/permissionModel';
 
 const useStyles = makeStyles({
   table: {
@@ -33,7 +33,15 @@ const Calculator = () => {
     all: [0, 0, 0,],
     setgid: false,
     setuid: false,
-    stickybit: false
+    stickybit: false,
+    fileOptions: {
+      folderOptions: {
+        recursive: false,
+        preserveRoot: false
+      },
+      referenceFile: ''
+    },
+    logging: PermissionLoggingOptions.Default
   });
 
   const handlePermChange = (event, index: number) => {

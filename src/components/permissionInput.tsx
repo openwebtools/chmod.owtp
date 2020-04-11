@@ -6,6 +6,7 @@ import CopyIcon from './copyIcon';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Hidden from '@material-ui/core/Hidden';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -69,9 +70,19 @@ const PermissionInput = (props) => {
           Result Copied!
         </Alert>
       </Snackbar>
-      <Typography variant="h6" className={classes.label} >
-        {props.permissionValue}
-      </Typography>
+
+      <Hidden only='xs' >
+        <Typography variant="h2" className={classes.label} >
+          {props.permissionValue}
+        </Typography>
+      </Hidden>
+
+      <Hidden smUp >
+        <Typography variant="h5" className={classes.label} >
+          {props.permissionValue}
+        </Typography>
+      </Hidden>
+
       <IconButton className={classes.iconButton} aria-label="copy value" onClick={handleClick}>
         <CopyIcon />
       </IconButton>
