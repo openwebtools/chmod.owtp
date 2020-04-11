@@ -65,19 +65,26 @@ const PermissionInput = (props) => {
 
   return (
     <Paper className={classes.root} elevation={0}>
-      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert onClose={handleClose} variant="filled" severity="success">
-          Result Copied!
-        </Alert>
-      </Snackbar>
 
       <Hidden only='xs' >
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <Alert onClose={handleClose} variant="filled" severity="success">
+            Result Copied!
+        </Alert>
+        </Snackbar>
         <Typography variant="h2" className={classes.label} >
           {props.permissionValue}
         </Typography>
       </Hidden>
 
       <Hidden smUp >
+
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+          <Alert onClose={handleClose} variant="filled" severity="success">
+            Result Copied!
+        </Alert>
+        </Snackbar>
         <Typography variant="h5" className={classes.label} >
           {props.permissionValue}
         </Typography>
