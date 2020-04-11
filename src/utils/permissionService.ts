@@ -1,5 +1,10 @@
-import { PermissionModel } from '../models/permissionModel';
+import { PermissionModel, PermissionLoggingOptions } from '../models/permissionModel';
 
+
+
+const chmod = 'chmod';
+const argumentPrefix = '--';
+const delimiter = '-';
 /**
  * A service which performs the logic of calculating
  * and converting permissions.
@@ -12,7 +17,32 @@ export default class PermissionService {
    * @param numeric Whether numeric or symbolic representation.
    */
   public computeCommand(value: PermissionModel, numeric: boolean) {
+    let valueResult: string;
 
+    if (numeric) {
+      valueResult = this.computeNumeric(value);
+    } else {
+      valueResult = this.computeSymbolicCommand(value);
+    }
+
+    if(value.fileOptions.referenceFile !== '') {
+      valueResult = `${argumentPrefix}reference=${value.fileOptions.referenceFile}`;
+    }
+
+    if(value.fileOptions.folderOptions.recursive) {
+      if(value.fileOptions.folderOptions.preserveRoot) {
+        valueResult = `${argumentPrefix}preserve-root ${valueResult}`;
+      }
+
+      valueResult = `-R ${valueResult}`;
+    }
+    
+
+    if(value.logging !== PermissionLoggingOptions.Default) {
+      valueResult = `${argumentPrefix}${value.logging} ${valueResult}`;
+    }
+
+    return `${chmod} ${valueResult}`;
   }
 
   /**
@@ -23,9 +53,9 @@ export default class PermissionService {
     const all = this.binaryToNumber(this.arrayToString(value.all));
     const group = this.binaryToNumber(this.arrayToString(value.group));
     const special = this.computeNumericalSpecialPermissions(value.setuid, value.setgid, value.stickybit);
-    
+
     let numeric: string;
-    if(special === 0) {
+    if (special === 0) {
       numeric = this.arrayToString([owner, group, all]);
     } else {
       numeric = this.arrayToString([special, owner, group, all])
@@ -41,15 +71,15 @@ export default class PermissionService {
    */
   public computeSymbolicDisplay(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
-    if(value.setuid) {
+    if (value.setuid) {
       owner = owner.replace('x', 's');
     }
     let group = this.binaryToSymbolic(value.group);
-    if(value.setgid) {
+    if (value.setgid) {
       group = group.replace('x', 's');
     }
     let all = this.binaryToSymbolic(value.all);
-    if(value.stickybit) {
+    if (value.stickybit) {
       all = all.replace('x', 't');
     }
     return this.arrayToString([owner, group, all]);
@@ -61,18 +91,18 @@ export default class PermissionService {
    */
   public computeSymbolicCommand(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
-    if(value.setuid) {
+    if (value.setuid) {
       owner += 's';
     }
     let group = this.binaryToSymbolic(value.group);
-    if(value.setgid) {
+    if (value.setgid) {
       group += 's';
     }
     const all = this.binaryToSymbolic(value.all);
 
     let result = this.mergeSymbolicCommands(owner, group, all);
 
-    if(value.stickybit) {
+    if (value.stickybit) {
       result += ',+t';
     }
 
@@ -100,17 +130,17 @@ export default class PermissionService {
    * @param binary Binary representation as array
    */
   private binaryToSymbolic(binary: [number, number, number]): string {
-    const symbolic = ['-', '-', '-'];
+    const symbolic = [delimiter, delimiter, delimiter];
 
-    if(binary[0] == 1) {
+    if (binary[0] == 1) {
       symbolic[0] = 'r';
     }
 
-    if(binary[1] == 1) {
+    if (binary[1] == 1) {
       symbolic[1] = 'w';
     }
 
-    if(binary[2] == 1) {
+    if (binary[2] == 1) {
       symbolic[2] = 'x';
     }
 
@@ -125,12 +155,12 @@ export default class PermissionService {
    */
   private mergeSymbolicCommands(owner: string, group: string, all: string) {
     const combinedString = this.arrayToString([owner, group, all]);
-    if(!combinedString.includes('-')) {
+    if (!combinedString.includes(delimiter)) {
       return 'a+rwx';
-    } else if(combinedString.match(/-/).length == combinedString.length) {
+    } else if (combinedString.match(/-/).length == combinedString.length) {
       return 'a-rwx';
     } else {
-      return `u+${owner},g+${group},o+${all}`.replace('-', '');
+      return `u+${owner},g+${group},o+${all}`.replace(delimiter, '');
     }
   }
 
