@@ -2,7 +2,7 @@ import React from 'react';
 import NextApp from 'next/app';
 import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import MaterialTheme from '../src/theme';
+import MaterialTheme from '../src/MaterialTheme';
 import Router from 'next/router';
 import withGA from 'next-ga';
 
