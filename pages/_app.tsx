@@ -3,8 +3,6 @@ import NextApp from 'next/app';
 import Head from 'next/head';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MaterialTheme from '../src/MaterialTheme';
-import Router from 'next/router';
-import withGA from 'next-ga';
 
 /**
  * Chmod App.
@@ -49,4 +47,4 @@ class ChmodApp extends NextApp {
   }
 }
 
-export default withGA('UA-155159093-2', Router)(ChmodApp);
+export default ChmodApp;
