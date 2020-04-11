@@ -23,7 +23,7 @@ const Calculator = () => {
     subHeader: 'An easy to use, simple chmod calculator',
   };
 
-  const [permissionString, setPermissionString] = React.useState('000');
+  const [permissionString, setPermissionString] = React.useState('chmod 000');
 
   const classes = useStyles({});
   
@@ -47,7 +47,7 @@ const Calculator = () => {
   const handlePermChange = (event, index: number) => {
     var newPerms = {...perms};
     newPerms[event.target.name][index] = Number(event.target.checked);
-    setPermissionString(permissionService.computeNumeric(newPerms));
+    setPermissionString(permissionService.computeCommand(newPerms, true));
     setPerms(newPerms);
   };
 

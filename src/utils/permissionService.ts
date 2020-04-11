@@ -16,7 +16,7 @@ export default class PermissionService {
    * @param value Permission value data.
    * @param numeric Whether numeric or symbolic representation.
    */
-  public computeCommand(value: PermissionModel, numeric: boolean) {
+  public computeCommand(value: PermissionModel, numeric: boolean): string {
     let valueResult: string;
 
     if (numeric) {
@@ -36,7 +36,7 @@ export default class PermissionService {
 
       valueResult = `-R ${valueResult}`;
     }
-    
+
 
     if(value.logging !== PermissionLoggingOptions.Default) {
       valueResult = `${argumentPrefix}${value.logging} ${valueResult}`;

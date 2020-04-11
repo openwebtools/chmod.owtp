@@ -73,7 +73,7 @@ const PermissionInput = (props) => {
             Result Copied!
         </Alert>
         </Snackbar>
-        <Typography variant="h2" className={classes.label} >
+        <Typography variant="h4" className={classes.label} >
           {props.permissionValue}
         </Typography>
       </Hidden>
@@ -85,7 +85,7 @@ const PermissionInput = (props) => {
             Result Copied!
         </Alert>
         </Snackbar>
-        <Typography variant="h5" className={classes.label} >
+        <Typography variant="h6" className={classes.label} >
           {props.permissionValue}
         </Typography>
       </Hidden>
