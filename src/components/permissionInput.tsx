@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -28,15 +28,20 @@ const useStyles = makeStyles(() =>
     iconButton: {
       padding: 10,
     },
+    hiddenText: {
+      display: 'none'
+    }
   }),
 );
 
 const PermissionInput = (props) => {
   const classes = useStyles({});
   const [open, setOpen] = React.useState(false);
+  const textAreaRef = useRef(null);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setOpen(true);
+    copyToClipboard(props.permissionValue);
   };
 
   const handleClose = (event, reason) => {
@@ -47,6 +52,16 @@ const PermissionInput = (props) => {
     setOpen(false);
   };
 
+  const copyToClipboard = (value: string) => {
+    var input = document.createElement('textarea');
+    input.innerHTML = value;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+  };
+
 
   return (
     <Paper className={classes.root} elevation={0}>
@@ -55,7 +70,7 @@ const PermissionInput = (props) => {
           Result Copied!
         </Alert>
       </Snackbar>
-      <Typography variant="h6" className={classes.label}>
+      <Typography variant="h6" className={classes.label} >
         {props.permissionValue}
       </Typography>
       <IconButton className={classes.iconButton} aria-label="copy value" onClick={handleClick}>
