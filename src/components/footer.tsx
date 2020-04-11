@@ -1,5 +1,5 @@
 import React from 'react';
-import {Typography, Link, Divider} from '@material-ui/core';
+import {Typography, Link} from '@material-ui/core';
 import OwtIcon from './owtIcon';
 import createStyles from '@material-ui/core/styles/createStyles';
 import makeStyles from '@material-ui/core/styles/makeStyles';
