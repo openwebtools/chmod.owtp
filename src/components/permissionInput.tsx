@@ -37,7 +37,6 @@ const useStyles = makeStyles(() =>
 const PermissionInput = (props) => {
   const classes = useStyles({});
   const [open, setOpen] = React.useState(false);
-  const textAreaRef = useRef(null);
 
   const handleClick = (e) => {
     setOpen(true);
