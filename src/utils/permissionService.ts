@@ -7,7 +7,16 @@ import { PermissionModel } from '../models/permissionModel';
 export default class PermissionService {
 
   /**
-   * Computes the numeric permission value.
+   * Returns the full chmod command.
+   * @param value Permission value data.
+   * @param numeric Whether numeric or symbolic representation.
+   */
+  public computeCommand(value: PermissionModel, numeric: boolean) {
+
+  }
+
+  /**
+   * Returns the numeric permission value.
    */
   public computeNumeric(value: PermissionModel): string {
     const owner = this.binaryToNumber(this.arrayToString(value.owner));
@@ -27,8 +36,8 @@ export default class PermissionService {
   }
 
   /**
-   * Computes the presentable symbolic permission value.
-   * @param value Permission binary values.
+   * Returns the presentable symbolic permission value.
+   * @param value Permission value data.
    */
   public computeSymbolicDisplay(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
@@ -46,9 +55,9 @@ export default class PermissionService {
     return this.arrayToString([owner, group, all]);
   }
 
-    /**
-   * Computes the command symbolic permission value.
-   * @param value Permission binary values.
+  /**
+   * Returns the command symbolic permission value.
+   * @param value Permission value data.
    */
   public computeSymbolicCommand(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
