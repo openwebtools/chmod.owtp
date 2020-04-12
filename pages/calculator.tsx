@@ -118,7 +118,7 @@ const Calculator = () => {
     var newPerms = { ...perms };
 
     if(event.target.checked) {
-
+      // code to be added.
     } else {
       newPerms.fileOptions.folderOptions.preserveRoot = event.target.checked;
     }
