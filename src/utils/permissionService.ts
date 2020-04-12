@@ -1,4 +1,4 @@
-import { PermissionModel, PermissionLoggingOptions } from '../models/permissionModel';
+import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../models/permissionModel';
 
 
 
@@ -12,11 +12,23 @@ const delimiter = '-';
 export default class PermissionService {
 
   /**
+   * Returns the permission calculation result.
+   * @param value Permission value data.
+   */
+  public computeResult(value: PermissionModel): PermissionResult {
+    return {
+      octal: this.computeCommand(value, true),
+      symbolic: this.computeCommand(value, false),
+      display: this.computeSymbolicDisplay(value)
+    };
+  }
+
+  /**
    * Returns the full chmod command.
    * @param value Permission value data.
    * @param numeric Whether numeric or symbolic representation.
    */
-  public computeCommand(value: PermissionModel, numeric: boolean): string {
+  private computeCommand(value: PermissionModel, numeric: boolean): string {
     let valueResult: string;
 
     if (numeric) {
@@ -47,8 +59,9 @@ export default class PermissionService {
 
   /**
    * Returns the numeric permission value.
+   * @param value Permission value data.
    */
-  public computeNumeric(value: PermissionModel): string {
+  private computeNumeric(value: PermissionModel): string {
     const owner = this.binaryToNumber(this.arrayToString(value.owner));
     const all = this.binaryToNumber(this.arrayToString(value.all));
     const group = this.binaryToNumber(this.arrayToString(value.group));
@@ -69,7 +82,7 @@ export default class PermissionService {
    * Returns the presentable symbolic permission value.
    * @param value Permission value data.
    */
-  public computeSymbolicDisplay(value: PermissionModel): string {
+  private computeSymbolicDisplay(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
     if (value.setuid) {
       owner = owner.replace('x', 's');
@@ -89,7 +102,7 @@ export default class PermissionService {
    * Returns the command symbolic permission value.
    * @param value Permission value data.
    */
-  public computeSymbolicCommand(value: PermissionModel): string {
+  private computeSymbolicCommand(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
     if (value.setuid) {
       owner += 's';
@@ -157,11 +170,23 @@ export default class PermissionService {
     const combinedString = this.arrayToString([owner, group, all]);
     if (!combinedString.includes(delimiter)) {
       return 'a+rwx';
-    } else if (combinedString.match(/-/).length == combinedString.length) {
+    } else if (combinedString.match(/-/g).length == combinedString.length) {
       return 'a-rwx';
     } else {
-      return `u+${owner},g+${group},o+${all}`.replace(delimiter, '');
+      const result = `${this.computeSymbolicIndividual('u+', owner)},${this.computeSymbolicIndividual('g+', group)},${this.computeSymbolicIndividual('o+', all)}`;
+
+      return result.replace(/-/g, '').split(',').filter((item) =>{
+        return item !== '';
+      }).join(',');
     }
+  }
+
+  private computeSymbolicIndividual(prefix: string, value: string): string {
+    const match = value.match(/-/g);
+    if(match && match.length === value.length) {
+      return ''
+    }
+    return `${prefix}${value}`;
   }
 
   /**

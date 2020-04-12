@@ -25,3 +25,15 @@ export enum PermissionLoggingOptions {
     Silent = 'silent',
     Default = ''
 }
+
+export enum PermissionDisplayValues {
+    Octal = 'Octal chmod command',
+    Symbolic = 'Symbolic chmod command',
+    Display = 'Permission listing value'
+}
+
+export interface PermissionResult {
+    octal: string;
+    symbolic: string;
+    display: string;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
 import {
   TableContainer, TableHead, TableRow, TableCell,
@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import PermissionInput from '../src/components/permissionInput';
 import PermissionService from '../src/utils/permissionService';
-import { PermissionModel, PermissionLoggingOptions } from '../src/models/permissionModel';
+import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../src/models/permissionModel';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
@@ -48,7 +48,12 @@ const Calculator = () => {
     subHeader: 'An easy to use, simple chmod calculator',
   };
 
-  const [permissionString, setPermissionString] = React.useState('chmod 000');
+  const [permissionResult, setPermissionResult] = React.useState<PermissionResult>(null);
+
+  useEffect(() => {
+    var newPerms = { ...perms };
+    updatePermission(newPerms);
+  }, []);
 
   const [alignment, setAlignment] = React.useState<string | null>('left');
 
@@ -56,9 +61,7 @@ const Calculator = () => {
     setAlignment(newAlignment);
     var newPerms = { ...perms };
     newPerms.logging = PermissionLoggingOptions[event.target.textContent];
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
-
+    updatePermission(newPerms);
   };
 
   const classes = useStyles({});
@@ -83,15 +86,13 @@ const Calculator = () => {
   const handlePermChange = (event, index: number) => {
     var newPerms = { ...perms };
     newPerms[event.target.name][index] = Number(event.target.checked);
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
+    updatePermission(newPerms);
   };
 
   const handleModeChange = (event) => {
     var newPerms = { ...perms };
     newPerms[event.target.name] = event.target.checked;
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
+    updatePermission(newPerms);
   }
 
   const handleRecursionChange = (event) => {
@@ -102,16 +103,19 @@ const Calculator = () => {
       newPerms.fileOptions.folderOptions.preserveRoot = false;
     }
 
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
+    updatePermission(newPerms);
   }
 
   const handlePreserveRootChange = (event) => {
     var newPerms = { ...perms };
     newPerms.fileOptions.folderOptions.preserveRoot = event.target.checked;
 
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
+    updatePermission(newPerms);
+  }
+
+  const updatePermission = (value: PermissionModel) => {
+    setPermissionResult(permissionService.computeResult(value));
+    setPerms(value);
   }
 
   const handleFileReference = (event) => {
@@ -122,9 +126,7 @@ const Calculator = () => {
     } else {
       newPerms.fileOptions.folderOptions.preserveRoot = event.target.checked;
     }
-
-    setPermissionString(permissionService.computeCommand(newPerms, true));
-    setPerms(newPerms);
+    updatePermission(newPerms);
   }
 
   return (
@@ -138,7 +140,7 @@ const Calculator = () => {
                 <TableCell align="center">Permissions</TableCell>
                 <TableCell align="center">Owner</TableCell>
                 <TableCell align="center">Group</TableCell>
-                <TableCell align="center">All</TableCell>
+                <TableCell align="center">Others</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -181,7 +183,7 @@ const Calculator = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <PermissionInput permissionValue={permissionString} />
+        <PermissionInput permissionValue={permissionResult} />
 
         <Divider />
         <Grid container direction="row" justify="center" alignItems="center" spacing={2} className={classes.modeOptions}>         
