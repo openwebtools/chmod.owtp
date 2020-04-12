@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     marginTop: '10px'
   },
   loggingBtn: {
-    fontSize: '0.63rem'
+    fontSize: '0.75rem'
   }
 });
 
@@ -52,8 +52,13 @@ const Calculator = () => {
 
   const [alignment, setAlignment] = React.useState<string | null>('left');
 
-  const handleAlignment = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
+  const handleOutputChange = (event, newAlignment: string | null) => {
     setAlignment(newAlignment);
+    var newPerms = { ...perms };
+    newPerms.logging = PermissionLoggingOptions[event.target.textContent];
+    setPermissionString(permissionService.computeCommand(newPerms, true));
+    setPerms(newPerms);
+
   };
 
   const classes = useStyles({});
@@ -216,7 +221,7 @@ const Calculator = () => {
         </Grid>
         <div className={classes.loggingOptions}>
           <span>Output Options</span>
-          <ToggleButtonGroup value={alignment} exclusive onChange={handleAlignment} aria-label="text alignment">
+          <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label="text alignment" size="small">
             <ToggleButton value="left" aria-label="left aligned" className={classes.loggingBtn}>
               Default
             </ToggleButton>
