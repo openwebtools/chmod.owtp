@@ -14,10 +14,7 @@ const useStyles = makeStyles(() =>
     icon: {
       paddingRight: '5px',
       marginTop: '2px'
-    },
-    footer: {
-      marginBottom: '5px'
-  }
+    }
   }),
 );
 
@@ -25,7 +22,7 @@ const Footer = () => {
   const classes = useStyles({});
 
   return (
-    <div className={classes.footer}>
+    <div>
       <Typography variant="body2" color="inherit" align="center">
         <Link href="https://openweb.tools" className={classes.root}>
           <OwtIcon className={classes.icon} fontSize="large"/>
@@ -33,9 +30,6 @@ const Footer = () => {
           {new Date().getFullYear()}
         </Link>
       </Typography>
-      <style jsx>{`
-        
-      `}</style>
     </div>
   );
 };
