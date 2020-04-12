@@ -183,12 +183,7 @@ const Calculator = () => {
         </Grid>
         <div className={classes.loggingOptions}>
           <span>Output Options</span>
-          <ToggleButtonGroup
-            value={alignment}
-            exclusive
-            onChange={handleAlignment}
-            aria-label="text alignment"
-          >
+          <ToggleButtonGroup value={alignment} exclusive onChange={handleAlignment} aria-label="text alignment">
             <ToggleButton value="left" aria-label="left aligned" className={classes.loggingBtn}>
               Default
             </ToggleButton>
