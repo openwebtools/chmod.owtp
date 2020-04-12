@@ -15,7 +15,7 @@ function Alert(props) {
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      padding: '16px 16px 10px 16px',
+      padding: '16px 16px 16px 16px',
       display: 'flex'
     },
     label: {
