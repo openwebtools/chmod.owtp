@@ -89,6 +89,39 @@ const Calculator = () => {
     setPerms(newPerms);
   }
 
+  const handleRecursionChange = (event) => {
+    var newPerms = { ...perms };
+    newPerms.fileOptions.folderOptions.recursive = event.target.checked;
+
+    if(newPerms.fileOptions.folderOptions.preserveRoot && !event.target.checked) {
+      newPerms.fileOptions.folderOptions.preserveRoot = false;
+    }
+
+    setPermissionString(permissionService.computeCommand(newPerms, true));
+    setPerms(newPerms);
+  }
+
+  const handlePreserveRootChange = (event) => {
+    var newPerms = { ...perms };
+    newPerms.fileOptions.folderOptions.preserveRoot = event.target.checked;
+
+    setPermissionString(permissionService.computeCommand(newPerms, true));
+    setPerms(newPerms);
+  }
+
+  const handleFileReference = (event) => {
+    var newPerms = { ...perms };
+
+    if(event.target.checked) {
+
+    } else {
+      newPerms.fileOptions.folderOptions.preserveRoot = event.target.checked;
+    }
+
+    setPermissionString(permissionService.computeCommand(newPerms, true));
+    setPerms(newPerms);
+  }
+
   return (
     <div>
       <SubjectHeader {...header} />
@@ -169,14 +202,14 @@ const Calculator = () => {
               <FormLabel component="legend">File Options</FormLabel>
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox checked={perms.fileOptions.folderOptions.recursive} onChange={handleModeChange} name="fileOptions.folderOptions.recursive" />}
+                  control={<Checkbox checked={perms.fileOptions.folderOptions.recursive} onChange={handleRecursionChange}/>}
                   label="Recursive" />
                 <FormControlLabel
-                  control={<Checkbox checked={perms.fileOptions.folderOptions.preserveRoot} onChange={handleModeChange} name="fileOptions.folderOptions.preserveRoot" />}
+                  control={<Checkbox checked={perms.fileOptions.folderOptions.preserveRoot} disabled={!perms.fileOptions.folderOptions.recursive} onChange={handlePreserveRootChange} />}
                   label="Preserve Root" />
                 <FormControlLabel
-                  control={<Checkbox checked={perms.stickybit} onChange={handleModeChange} name="stickybit" />}
-                  label="stickybit" />
+                  control={<Checkbox checked={Boolean(perms.fileOptions.referenceFile)} onChange={handleFileReference} name="stickybit" />}
+                  label="File Reference" />
               </FormGroup>
             </FormControl>
           </Grid>
