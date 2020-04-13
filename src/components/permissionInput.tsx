@@ -57,7 +57,7 @@ const useStyles = makeStyles(() =>
 
 
 const PermissionInput = (props) => {
-  const classes = useStyles({});
+  const styles = useStyles({});
   const [open, setOpen] = React.useState(false);
 
   const [alignment, setAlignment] = React.useState<string | null>('left');
@@ -103,8 +103,8 @@ const PermissionInput = (props) => {
 
 
   return (
-      <Paper className={classes.root} elevation={0}>
-        <div className={classes.permissionContainer}>
+      <Paper className={styles.root} elevation={0}>
+        <div className={styles.permissionContainer}>
         <Hidden only='xs' >
 
           <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
@@ -112,7 +112,7 @@ const PermissionInput = (props) => {
               Result Copied!
         </Alert>
           </Snackbar>
-          <Typography variant="h4" className={classes.label} >
+          <Typography variant="h4" className={styles.label} >
             {permissionValue}
           </Typography>
         </Hidden>
@@ -124,25 +124,25 @@ const PermissionInput = (props) => {
               Result Copied!
         </Alert>
           </Snackbar>
-          <Typography variant="h6" className={classes.label} >
+          <Typography variant="h6" className={styles.label} >
             {permissionValue}
           </Typography>
         </Hidden>
 
-        <IconButton className={classes.iconButton} aria-label="copy value" onClick={handleClick}>
+        <IconButton className={styles.iconButton} aria-label="copy value" onClick={handleClick}>
           <CopyIcon />
         </IconButton>
         </div>
-      <div className={classes.optionContainer}>
+      <div className={styles.optionContainer}>
         <div>{permissionLabel}</div>
         <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label="text alignment" size="small">
-          <ToggleButton value="left" aria-label="left aligned" className={classes.optionsBtn}>
+          <ToggleButton value="left" aria-label="left aligned" className={styles.optionsBtn}>
             Octal
             </ToggleButton>
-          <ToggleButton value="center" aria-label="centered" className={classes.optionsBtn}>
+          <ToggleButton value="center" aria-label="centered" className={styles.optionsBtn}>
             Symbolic
             </ToggleButton>
-          <ToggleButton value="right" aria-label="right aligned" className={classes.optionsBtn}>
+          <ToggleButton value="right" aria-label="right aligned" className={styles.optionsBtn}>
             Display
             </ToggleButton>
         </ToggleButtonGroup>
