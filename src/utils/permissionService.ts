@@ -5,6 +5,8 @@ import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../
 const chmod = 'chmod';
 const argumentPrefix = '--';
 const delimiter = '-';
+const allPerm = 'a+rwx';
+const noPerm = 'a-rwx';
 /**
  * A service which performs the logic of calculating
  * and converting permissions.
@@ -169,15 +171,16 @@ export default class PermissionService {
   private mergeSymbolicCommands(owner: string, group: string, all: string) {
     const combinedString = this.arrayToString([owner, group, all]);
     if (!combinedString.includes(delimiter)) {
-      return 'a+rwx';
+      return allPerm;
     } else if (combinedString.match(/-/g).length == combinedString.length) {
-      return 'a-rwx';
+      return noPerm;
     } else {
       const result = `${this.computeSymbolicIndividual('u+', owner)},${this.computeSymbolicIndividual('g+', group)},${this.computeSymbolicIndividual('o+', all)}`;
 
-      return result.replace(/-/g, '').split(',').filter((item) =>{
+      const resultProcessed = result.replace(/-/g, '').split(',').filter((item) =>{
         return item !== '';
       }).join(',');
+      return `${noPerm},${resultProcessed}`;
     }
   }
 

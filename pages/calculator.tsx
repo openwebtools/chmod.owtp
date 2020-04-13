@@ -6,11 +6,11 @@ import {
   Checkbox, Box, FormControl, FormLabel,
   FormGroup, FormControlLabel, Divider, Grid
 } from '@material-ui/core';
-import PermissionInput from '../src/components/permissionInput';
 import PermissionService from '../src/utils/permissionService';
 import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../src/models/permissionModel';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import PermissionDisplay from '../src/components/permissionDisplay';
 
 const useStyles = makeStyles({
   table: {
@@ -64,7 +64,7 @@ const Calculator = () => {
     updatePermission(newPerms);
   };
 
-  const classes = useStyles({});
+  const styles = useStyles({});
 
   const [perms, setPerms] = React.useState<PermissionModel>({
     owner: [0, 0, 0],
@@ -134,7 +134,7 @@ const Calculator = () => {
       <SubjectHeader {...header} />
       <Box borderTop={1} borderBottom={0} borderColor="grey.700" className="tableWrapper">
         <TableContainer>
-          <Table className={classes.table} aria-label="permission table">
+          <Table className={styles.table} aria-label="permission table">
             <TableHead>
               <TableRow>
                 <TableCell align="center">Permissions</TableCell>
@@ -183,11 +183,11 @@ const Calculator = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <PermissionInput permissionValue={permissionResult} />
+        <PermissionDisplay permissionValue={permissionResult} />
 
         <Divider />
-        <Grid container direction="row" justify="center" alignItems="center" spacing={2} className={classes.modeOptions}>         
-          <Grid item xs={6} className={classes.modeOptionItem}>
+        <Grid container direction="row" justify="center" alignItems="center" spacing={2} className={styles.modeOptions}>         
+          <Grid item xs={6} className={styles.modeOptionItem}>
             <FormControl component="fieldset" >
               <FormLabel component="legend">Special Modes</FormLabel>
               <FormGroup>
@@ -204,7 +204,7 @@ const Calculator = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={6} className={classes.modeOptionItem}>
+          <Grid item xs={6} className={styles.modeOptionItem}>
             <FormControl component="fieldset">
               <FormLabel component="legend">File Options</FormLabel>
               <FormGroup>
@@ -221,19 +221,19 @@ const Calculator = () => {
             </FormControl>
           </Grid>
         </Grid>
-        <div className={classes.loggingOptions}>
+        <div className={styles.loggingOptions}>
           <span>Output Options</span>
           <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label="text alignment" size="small">
-            <ToggleButton value="left" aria-label="left aligned" className={classes.loggingBtn}>
+            <ToggleButton value="left" aria-label="left aligned" className={styles.loggingBtn}>
               Default
             </ToggleButton>
-            <ToggleButton value="center" aria-label="centered" className={classes.loggingBtn}>
+            <ToggleButton value="center" aria-label="centered" className={styles.loggingBtn}>
               Verbose
             </ToggleButton>
-            <ToggleButton value="right" aria-label="right aligned" className={classes.loggingBtn}>
+            <ToggleButton value="right" aria-label="right aligned" className={styles.loggingBtn}>
               Changes
             </ToggleButton>
-            <ToggleButton value="justify" aria-label="justified" className={classes.loggingBtn}>
+            <ToggleButton value="justify" aria-label="justified" className={styles.loggingBtn}>
               Silent
             </ToggleButton>
           </ToggleButtonGroup>

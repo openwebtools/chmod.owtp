@@ -19,13 +19,13 @@ const useStyles = makeStyles(() =>
 );
 
 const Footer = () => {
-  const classes = useStyles({});
+  const styles = useStyles({});
 
   return (
     <div>
       <Typography variant="body2" color="inherit" align="center">
-        <Link href="https://openweb.tools" className={classes.root}>
-          <OwtIcon className={classes.icon} fontSize="large"/>
+        <Link href="https://openweb.tools" className={styles.root}>
+          <OwtIcon className={styles.icon} fontSize="large"/>
           {'| Open Web Tools © '}
           {new Date().getFullYear()}
         </Link>
