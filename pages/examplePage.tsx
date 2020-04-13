@@ -1,5 +1,6 @@
 import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
+import MarkdownElement from '../src/components/MarkdownElement';
 
 const ExamplePage = () => {
   const header = {
@@ -9,6 +10,9 @@ const ExamplePage = () => {
   return (
     <div>
       <SubjectHeader {...header}/>
+      <MarkdownElement>
+        `chmod`
+      </MarkdownElement>
     </div>
   );
 };
