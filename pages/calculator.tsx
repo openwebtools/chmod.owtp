@@ -6,11 +6,11 @@ import {
   Checkbox, Box, FormControl, FormLabel,
   FormGroup, FormControlLabel, Divider, Grid
 } from '@material-ui/core';
-import PermissionInput from '../src/components/permissionInput';
 import PermissionService from '../src/utils/permissionService';
 import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../src/models/permissionModel';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import PermissionDisplay from '../src/components/permissionDisplay';
 
 const useStyles = makeStyles({
   table: {
@@ -183,7 +183,7 @@ const Calculator = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <PermissionInput permissionValue={permissionResult} />
+        <PermissionDisplay permissionValue={permissionResult} />
 
         <Divider />
         <Grid container direction="row" justify="center" alignItems="center" spacing={2} className={styles.modeOptions}>         

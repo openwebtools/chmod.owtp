@@ -56,27 +56,36 @@ const useStyles = makeStyles(() =>
 
 
 
-const PermissionInput = (props) => {
+const PermissionDisplay = (props) => {
   const styles = useStyles({});
+
   const [open, setOpen] = React.useState(false);
-
   const [alignment, setAlignment] = React.useState<string | null>('left');
-
   const [permissionValue, setPermissionValue] = React.useState<string | null>('');
   const [permissionLabel, setPermissionLabel] = React.useState<string | null>('');
 
   useEffect(() => {
     if (props.permissionValue) {
-      setPermissionValue(props.permissionValue.octal);
-      setPermissionLabel(PermissionDisplayValues.Octal);
+      handleOutputChange(alignmentValueMapper(alignment), alignment);
     }
   }, [props.permissionValue]);
 
-  const handleOutputChange = (event, newAlignment: string | null) => {
+  const handleOutputChange = (value: string, newAlignment: string | null) => {
     setAlignment(newAlignment);
-    setPermissionValue(props.permissionValue[event.target.textContent.toLowerCase()]);
-    setPermissionLabel(PermissionDisplayValues[event.target.textContent]);
+    setPermissionValue(props.permissionValue[value.toLowerCase()]);
+    setPermissionLabel(PermissionDisplayValues[value]);
   };
+
+  const alignmentValueMapper = (alignment: string) => {
+    switch(alignment) {
+      case 'left':
+        return 'Octal';
+      case 'center':
+        return 'Symbolic';
+      case 'right':
+        return 'Display';
+    }
+  }
 
   const handleClick = (e) => {
     setOpen(true);
@@ -135,7 +144,7 @@ const PermissionInput = (props) => {
         </div>
       <div className={styles.optionContainer}>
         <div>{permissionLabel}</div>
-        <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label="text alignment" size="small">
+        <ToggleButtonGroup value={alignment} exclusive onChange={(e:any, v:string) => handleOutputChange(e.target.textContent, v)} aria-label="text alignment" size="small">
           <ToggleButton value="left" aria-label="left aligned" className={styles.optionsBtn}>
             Octal
             </ToggleButton>
@@ -151,4 +160,4 @@ const PermissionInput = (props) => {
   );
 };
 
-export default PermissionInput;
+export default PermissionDisplay;
