@@ -76,8 +76,8 @@ const PermissionDisplay = (props) => {
     setPermissionLabel(PermissionDisplayValues[value]);
   };
 
-  const alignmentValueMapper = (alignment: string) => {
-    switch(alignment) {
+  const alignmentValueMapper = (value: string) => {
+    switch(value) {
       case 'left':
         return 'Octal';
       case 'center':
