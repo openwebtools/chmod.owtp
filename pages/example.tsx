@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ExamplePage = () => {
+const Example = () => {
   const styles = useStyles();
   const header = {
     header: 'chmod examples',
@@ -21,7 +21,6 @@ const ExamplePage = () => {
       <SubjectHeader {...header} />
       <Divider />
       <div className={styles.root}>
-
         <Markdown >
           chmod 777 file_name
       </Markdown>
@@ -30,4 +29,4 @@ const ExamplePage = () => {
   );
 };
 
-export default ExamplePage;
+export default Example;

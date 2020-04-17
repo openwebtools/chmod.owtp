@@ -17,7 +17,8 @@ const useStyle = makeStyles({
   content: {
     flex: '1',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    paddingBottom: '16px'
   }
 });
 
@@ -25,12 +26,10 @@ const MainLayout = (props: any) => {
   const styles = useStyle({});
   return (
     <Container maxWidth="md" classes={{ root: styles.root }}>
-      <div className={styles.content}>
-        <Paper>
+        <Paper className={styles.content}>
           <AppToolbar/>
           {props.children}
         </Paper>
-      </div>
       <Footer />
     </Container>
   );

@@ -7,6 +7,7 @@ import CalcIcon from './calcIcon';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
 import HistoryIcon from '@material-ui/icons/History';
+import { useRouter } from 'next/router'
 
 const useStyle = makeStyles({
     'header': {
@@ -30,12 +31,15 @@ function a11yProps(index: number) {
 }
 
 const AppToolbar = () => {
+    const router = useRouter();
+    const [value, setValue] = React.useState(router.route);
 
-    const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        router.push(newValue);
     };
+
     const styles = useStyle({});
 
     return (
@@ -44,30 +48,30 @@ const AppToolbar = () => {
             <AppBar position="static" color="default">
                 <Hidden only='xs' implementation="css">
                     <Tabs
-                        value={value}
                         indicatorColor="primary"
                         textColor="primary"
+                        value={value}
                         onChange={handleChange}
                         centered
                         aria-label="chmod options">
-                        <Tab label="calculator" {...a11yProps(0)} />
-                        <Tab label="syntax" {...a11yProps(1)} />
-                        <Tab label="man" {...a11yProps(2)} />
-                        <Tab label="history" {...a11yProps(3)} />
+                        <Tab label="calculator" {...a11yProps(0)} value='/'  />
+                        <Tab label="syntax" {...a11yProps(1)} value="/syntax"  />
+                        <Tab label="man" {...a11yProps(2)} value="/example"  />
+                        <Tab label="history" {...a11yProps(3)} value="/history"  />
                     </Tabs>
                 </Hidden>
                 <Hidden smUp implementation="css">
                     <Tabs
                         value={value}
+                        onChange={handleChange}
                         indicatorColor="primary"
                         textColor="primary"
-                        onChange={handleChange}
                         centered
                         aria-label="chmod options">
-                        <Tab icon={<CalcIcon />} {...a11yProps(0)} />
-                        <Tab icon={<CodeIcon />} {...a11yProps(1)} />
-                        <Tab icon={<SubjectIcon />} {...a11yProps(2)} />
-                        <Tab icon={<HistoryIcon />} {...a11yProps(3)} />
+                        <Tab icon={<CalcIcon />} {...a11yProps(0)} value="/"/>
+                        <Tab icon={<CodeIcon />} {...a11yProps(1)} value="/syntax"/>
+                        <Tab icon={<SubjectIcon />} {...a11yProps(2)} value="/example"/>
+                        <Tab icon={<HistoryIcon />} {...a11yProps(3)} value="/history"/>
                     </Tabs>
                 </Hidden>
             </AppBar>
