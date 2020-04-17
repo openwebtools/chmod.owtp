@@ -1,5 +1,6 @@
 import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
+import MainLayout from '../src/layouts/mainLayout';
 
 const History = () => {
   const header = {
@@ -7,9 +8,9 @@ const History = () => {
     subHeader: 'History of chmod command',
   };
   return (
-    <div>
+    <MainLayout>
       <SubjectHeader {...header}/>
-    </div>
+    </MainLayout>
   );
 };
 

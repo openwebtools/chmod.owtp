@@ -11,6 +11,7 @@ import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import PermissionDisplay from '../src/components/permissionDisplay';
+import MainLayout from '../src/layouts/mainLayout';
 
 const useStyles = makeStyles({
   table: {
@@ -130,7 +131,7 @@ const Calculator = () => {
   }
 
   return (
-    <div>
+    <MainLayout>
       <SubjectHeader {...header} />
       <Box borderTop={1} borderBottom={0} borderColor="grey.700" className="tableWrapper">
         <TableContainer>
@@ -239,7 +240,7 @@ const Calculator = () => {
           </ToggleButtonGroup>
         </div>
       </Box>
-    </div>
+    </MainLayout>
   );
 };
 
