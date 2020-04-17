@@ -2,6 +2,7 @@ import React from 'react';
 import SubjectHeader from '../src/components/subjectHeader';
 import { Divider, makeStyles } from '@material-ui/core';
 import Markdown from '../src/components/Markdown';
+import MainLayout from '../src/layouts/mainLayout';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +17,7 @@ const ExamplePage = () => {
     subHeader: 'Examples for chmod command',
   };
   return (
-    <div>
+    <MainLayout>
       <SubjectHeader {...header} />
       <Divider />
       <div className={styles.root}>
@@ -25,7 +26,7 @@ const ExamplePage = () => {
           chmod 777 file_name
       </Markdown>
       </div>
-    </div>
+    </MainLayout>
   );
 };
 

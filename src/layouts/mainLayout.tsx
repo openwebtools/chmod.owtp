@@ -1,7 +1,9 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Footer from '../components/footer';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import AppToolbar from '../components/appToolbar';
 
 const useStyle = makeStyles({
   root: {
@@ -22,12 +24,14 @@ const useStyle = makeStyles({
 const MainLayout = (props: any) => {
   const styles = useStyle({});
   return (
-    <Container maxWidth="md" classes={{root: styles.root}}>
-      <div className={styles.content}>{props.children}</div>
-      <Footer/>
-      <style jsx>{`
-
-    `}</style>
+    <Container maxWidth="md" classes={{ root: styles.root }}>
+      <div className={styles.content}>
+        <Paper>
+          <AppToolbar/>
+          {props.children}
+        </Paper>
+      </div>
+      <Footer />
     </Container>
   );
 };
