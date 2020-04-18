@@ -56,7 +56,7 @@ const AppToolbar = () => {
                         aria-label="chmod options">
                         <Tab label="calculator" {...a11yProps(0)} value='/'  />
                         <Tab label="syntax" {...a11yProps(1)} value="/syntax"  />
-                        <Tab label="man" {...a11yProps(2)} value="/example"  />
+                        <Tab label="examples" {...a11yProps(2)} value="/example"  />
                         <Tab label="history" {...a11yProps(3)} value="/history"  />
                     </Tabs>
                 </Hidden>

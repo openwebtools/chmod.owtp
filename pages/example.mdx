@@ -1,0 +1,78 @@
+import Markdown from '../src/components/Markdown';
+import MainLayout from '../src/layouts/mainLayout';
+import SubjectHeader from '../src/components/subjectHeader';
+import { Divider } from '@material-ui/core';
+import CodeElement from '../src/components/codeElement.tsx';
+
+export const header = {
+    header: 'chmod examples',
+    subHeader: 'Examples for chmod command',
+};
+
+<MainLayout>
+    <SubjectHeader {...header} />
+    <Divider />
+
+>> Allow **anyone**(owner, group, others) to read, write & execute.
+<CodeElement>
+  chmod 777 file_name
+</CodeElement>
+
+>> Allow **anyone**(owner, group, others) to read, write only.
+<CodeElement>
+  chmod 666 file_name
+</CodeElement>
+
+>> Allow only **owner** to read, write & execute.
+<CodeElement>
+  chmod 700 file_name
+</CodeElement>
+
+>> Allow only **owner** to read & write.
+<CodeElement>
+  chmod 600 file_name
+</CodeElement>
+
+>> Allow only **owner** to read.
+<CodeElement>
+  chmod 400 file_name
+</CodeElement>
+
+>> Allow only **owner** to write.
+<CodeElement>
+  chmod 200 file_name
+</CodeElement>
+
+>> Allow only **owner** to execute.
+<CodeElement>
+  chmod 100 file_name
+</CodeElement>
+
+>> Allow only **group** to read, write & execute.
+<CodeElement>
+  chmod 070 file_name
+</CodeElement>
+
+>> Allow only **group** to read, write.
+<CodeElement>
+  chmod 060 file_name
+</CodeElement>
+
+>> Allow only **group** to read.
+<CodeElement>
+  chmod 040 file_name
+</CodeElement>
+
+>> Allow only **group** to write.
+<CodeElement>
+  chmod 020 file_name
+</CodeElement>
+
+>> Allow only **group** to execute.
+<CodeElement>
+  chmod 010 file_name
+</CodeElement>
+
+
+
+</MainLayout>
