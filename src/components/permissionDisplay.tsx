@@ -6,7 +6,6 @@ import CopyIcon from './copyIcon';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import Hidden from '@material-ui/core/Hidden';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { PermissionDisplayValues } from '../models/permissionModel';
@@ -77,7 +76,7 @@ const PermissionDisplay = (props) => {
   };
 
   const alignmentValueMapper = (value: string) => {
-    switch(value) {
+    switch (value) {
       case 'left':
         return 'Octal';
       case 'center':
@@ -112,39 +111,24 @@ const PermissionDisplay = (props) => {
 
 
   return (
-      <Paper className={styles.root} elevation={0}>
-        <div className={styles.permissionContainer}>
-        <Hidden only='xs' >
-
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-            <Alert onClose={handleClose} variant="filled" severity="success">
-              Result Copied!
+    <Paper className={styles.root} elevation={0}>
+      <div className={styles.permissionContainer}>
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <Alert onClose={handleClose} variant="filled" severity="success">
+            Result Copied!
         </Alert>
-          </Snackbar>
-          <Typography variant="h4" className={styles.label} >
-            {permissionValue}
-          </Typography>
-        </Hidden>
-
-        <Hidden smUp >
-
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-            <Alert onClose={handleClose} variant="filled" severity="success">
-              Result Copied!
-        </Alert>
-          </Snackbar>
-          <Typography variant="h6" className={styles.label} >
-            {permissionValue}
-          </Typography>
-        </Hidden>
+        </Snackbar>
+        <Typography variant="h6" className={styles.label} >
+          {permissionValue}
+        </Typography>
 
         <IconButton className={styles.iconButton} aria-label="copy value" onClick={handleClick}>
           <CopyIcon />
         </IconButton>
-        </div>
+      </div>
       <div className={styles.optionContainer}>
         <div>{permissionLabel}</div>
-        <ToggleButtonGroup value={alignment} exclusive onChange={(e:any, v:string) => handleOutputChange(e.target.textContent, v)} aria-label="text alignment" size="small">
+        <ToggleButtonGroup value={alignment} exclusive onChange={(e: any, v: string) => handleOutputChange(e.target.textContent, v)} aria-label="text alignment" size="small">
           <ToggleButton value="left" aria-label="left aligned" className={styles.optionsBtn}>
             Octal
             </ToggleButton>
@@ -156,7 +140,7 @@ const PermissionDisplay = (props) => {
             </ToggleButton>
         </ToggleButtonGroup>
       </div>
-      </Paper>
+    </Paper>
   );
 };
 

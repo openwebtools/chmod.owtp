@@ -1,0 +1,144 @@
+import MainLayout from '../src/layouts/mainLayout';
+import SubjectHeader from '../src/components/subjectHeader';
+import { Divider } from '@material-ui/core';
+import CodeElement from '../src/components/codeElement.tsx';
+import Typography from '@material-ui/core/Typography';
+
+export const header = {
+    header: '',
+    subHeader: 'Some useful examples of chmod command',
+};
+
+<MainLayout>
+    <SubjectHeader {...header} />
+    <Divider />
+
+<Typography variant="h6" align="center">
+Octal
+</Typography>
+
+> Allow **anyone**(owner, group, others) to read, write & execute.
+<CodeElement>
+  chmod 777 file_name
+</CodeElement>
+
+> Allow **anyone**(owner, group, others) to read, write only.
+<CodeElement>
+  chmod 666 file_name
+</CodeElement>
+
+> Allow only **owner** to read, write & execute.
+<CodeElement>
+  chmod 700 file_name
+</CodeElement>
+
+> Allow only **owner** to read & write.
+<CodeElement>
+  chmod 600 file_name
+</CodeElement>
+
+> Allow only **owner** to read.
+<CodeElement>
+  chmod 400 file_name
+</CodeElement>
+
+> Allow only **owner** to write.
+<CodeElement>
+  chmod 200 file_name
+</CodeElement>
+
+> Allow only **owner** to execute.
+<CodeElement>
+  chmod 100 file_name
+</CodeElement>
+
+> Allow only **group** to read, write & execute.
+<CodeElement>
+  chmod 070 file_name
+</CodeElement>
+
+> Allow only **group** to read, write.
+<CodeElement>
+  chmod 060 file_name
+</CodeElement>
+
+> Allow only **group** to read.
+<CodeElement>
+  chmod 040 file_name
+</CodeElement>
+
+> Allow only **group** to write.
+<CodeElement>
+  chmod 020 file_name
+</CodeElement>
+
+> Allow only **group** to execute.
+<CodeElement>
+  chmod 010 file_name
+</CodeElement>
+
+<Typography variant="h6" align="center">
+Symbolic
+</Typography>
+
+> Allow **anyone**(owner, group, others) to read, write & execute.
+<CodeElement>
+  chmod a+rwx file_name
+</CodeElement>
+
+> Allow **anyone**(owner, group, others) to read, write only.
+<CodeElement>
+  chmod a-rwx,u+rw,g+rw,o+rw file_name
+</CodeElement>
+
+> Allow only **owner** to read, write & execute.
+<CodeElement>
+  chmod a-rwx,u+rwx file_name
+</CodeElement>
+
+> Allow only **owner** to read & write.
+<CodeElement>
+  chmod a-rwx,u+rw file_name
+</CodeElement>
+
+> Allow only **owner** to read.
+<CodeElement>
+  chmod a-rwx,u+r file_name
+</CodeElement>
+
+> Allow only **owner** to write.
+<CodeElement>
+  chmod a-rwx,u+w file_name
+</CodeElement>
+
+> Allow only **owner** to execute.
+<CodeElement>
+  chmod a-rwx,u+x file_name
+</CodeElement>
+
+> Allow only **group** to read, write & execute.
+<CodeElement>
+  chmod a-rwx,g+rwx file_name
+</CodeElement>
+
+> Allow only **group** to read & write.
+<CodeElement>
+  chmod a-rwx,g+rw file_name
+</CodeElement>
+
+> Allow only **group** to read.
+<CodeElement>
+  chmod a-rwx,g+r file_name
+</CodeElement>
+
+> Allow only **group** to write.
+<CodeElement>
+  chmod a-rwx,g+w file_name
+</CodeElement>
+
+> Allow only **group** to execute.
+<CodeElement>
+  chmod a-rwx,g+x file_name
+</CodeElement>
+
+</MainLayout>

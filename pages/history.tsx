@@ -4,7 +4,7 @@ import MainLayout from '../src/layouts/mainLayout';
 
 const History = () => {
   const header = {
-    header: 'chmod history',
+    header: '',
     subHeader: 'History of chmod command',
   };
   return (
