@@ -8,20 +8,21 @@ interface ISubjectHeader {
 
 
 const useStyle = makeStyles({
-  'text': {
-    'text-align': 'center',
+  text: {
+    textAlign: 'center',
   },
-  'headerContainer': {
-    'width': '100%',
+  headerContainer: {
+    width: '100%',
+    padding: '12px',
   },
 });
 
 const SubjectHeader = (props: ISubjectHeader) => {
   const styles = useStyle({});
   return (
-    <div className="headerContainer">
+    <div className={styles.headerContainer}>
       <Typography variant="subtitle1" classes={{root: styles.text}} >{props.header}</Typography>
-      <Typography variant="subtitle2" classes={{root: styles.text}} >{props.subHeader}</Typography>
+      <Typography variant="body2" classes={{root: styles.text}} >{props.subHeader}</Typography>
     </div>
   );
 };

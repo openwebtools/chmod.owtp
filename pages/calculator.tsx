@@ -45,8 +45,8 @@ const permissionService = new PermissionService();
 const Calculator = () => {
 
   const header = {
-    header: 'chmod calculator',
-    subHeader: 'An easy to use, simple chmod calculator',
+    header: '',
+    subHeader: 'A free utility to calculate the numeric (octal) or symbolic value for a file or folder permissions to use with chmod command',
   };
 
   const [permissionResult, setPermissionResult] = React.useState<PermissionResult>(null);

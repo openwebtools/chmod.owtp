@@ -4,7 +4,7 @@ import MainLayout from '../src/layouts/mainLayout';
 
 const Syntax = () => {
   const header = {
-    header: 'chmod syntax',
+    header: '',
     subHeader: 'Syntax of chmod command',
   };
   return (
