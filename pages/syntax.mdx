@@ -1,0 +1,67 @@
+import SubjectHeader from '../src/components/subjectHeader';
+import MainLayout from '../src/layouts/mainLayout';
+import { Divider } from '@material-ui/core';
+import CodeElement from '../src/components/codeElement.tsx';
+import Typography from '@material-ui/core/Typography';
+
+
+export const header = {
+    header: '',
+    subHeader: 'Syntax of chmod command',
+};
+
+<MainLayout>
+  <SubjectHeader {...header} />
+  <Divider/>
+
+>### chmod - change file mode bits.
+>### In symbolic mode.
+<CodeElement hideCopy='true'>
+  chmod [OPTION]... MODE[,MODE]...  file_name...
+</CodeElement>
+
+>### In octal mode.
+<CodeElement hideCopy='true'>
+  chmod [OPTION]... OCTAL_MODE  file_name...
+</CodeElement >
+
+>### In file reference mode.
+<CodeElement hideCopy='true'>
+  chmod [OPTION]... --reference=referenced_file_name  file_name...
+</CodeElement>
+
+>### Options are:
+<CodeElement hideCopy='true'>
+<pre>
+Change the mode of each file_name to specified MODE.{'\n\n'}
+-c, --changes{'\n'}  
+Shows an output only when a change is made{'\n\n'}
+--no-preserve-root{'\n'} 
+do not treat '/' specially (the default){'\n\n'}
+--preserve-root{'\n'} 
+fail to operate recursively on '/'{'\n\n'}
+-f, --silent, --quiet{'\n'} 
+suppress most error messages{'\n\n'}
+-v, --verbose{'\n'} 
+output a diagnostic for every file processed{'\n\n'}
+--reference=reference_file_name{'\n'} 
+use reference_file_name's mode instead of MODE values{'\n\n'}
+-R, --recursive{'\n'} 
+change files and directories recursively{'\n\n'}
+--help{'\n'} 
+display this help and exit{'\n\n'}
+--version{'\n'} 
+output version information and exit{'\n\n'}
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+'.
+</pre>
+</CodeElement>
+
+>### setuid and setgid Bits
+**chmod** clears the set-group-ID bit of a regular file if the file's group ID does not match the user's effective group ID or one of the user's supplementary group IDs, unless the user has appropriate privileges. Additional restrictions may cause the set-user-ID and set-group-ID bits of MODE or RFILE to be ignored. This behavior depends on the policy and functionality of the underlying chmod system call. When in doubt, check the underlying system behavior.
+
+>**chmod** preserves a directory's set-user-ID and set-group-ID bits unless you explicitly specify otherwise. You can set or clear the bits with symbolic modes like u+s and g-s, and you can set (but not clear) the bits with a numeric mode.
+
+>### Restricted Deletion Flag or Sticky Bit
+The restricted deletion flag or sticky bit is a single bit, whose interpretation depends on the file type. For directories, it prevents unprivileged users from removing or renaming a file in the directory unless they own the file or the directory; this is called the restricted deletion flag for the directory, and is commonly found on world-writable directories like /tmp. For regular files on some older systems, the bit saves the program's text image on the swap device so it will load more quickly when run; this is called the sticky bit.
+
+</MainLayout>
