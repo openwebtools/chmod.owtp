@@ -6,7 +6,6 @@ import { Tabs, Tab, makeStyles } from '@material-ui/core';
 import CalcIcon from './calcIcon';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
-import HistoryIcon from '@material-ui/icons/History';
 import { useRouter } from 'next/router'
 
 const useStyle = makeStyles({
