@@ -6,7 +6,6 @@ import { Tabs, Tab, makeStyles } from '@material-ui/core';
 import CalcIcon from './calcIcon';
 import CodeIcon from '@material-ui/icons/Code';
 import SubjectIcon from '@material-ui/icons/Subject';
-import HistoryIcon from '@material-ui/icons/History';
 import { useRouter } from 'next/router'
 
 const useStyle = makeStyles({
@@ -57,7 +56,6 @@ const AppToolbar = () => {
                         <Tab label="calculator" {...a11yProps(0)} value='/'  />
                         <Tab label="syntax" {...a11yProps(1)} value="/syntax"  />
                         <Tab label="examples" {...a11yProps(2)} value="/example"  />
-                        <Tab label="history" {...a11yProps(3)} value="/history"  />
                     </Tabs>
                 </Hidden>
                 <Hidden smUp implementation="css">
@@ -71,7 +69,6 @@ const AppToolbar = () => {
                         <Tab icon={<CalcIcon />} {...a11yProps(0)} value="/"/>
                         <Tab icon={<CodeIcon />} {...a11yProps(1)} value="/syntax"/>
                         <Tab icon={<SubjectIcon />} {...a11yProps(2)} value="/example"/>
-                        <Tab icon={<HistoryIcon />} {...a11yProps(3)} value="/history"/>
                     </Tabs>
                 </Hidden>
             </AppBar>

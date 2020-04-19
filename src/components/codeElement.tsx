@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     iconButton: {
         padding: 5,
     },
+    hide: {
+        display: 'none',
+    }
 }));
 
 const CodeElement = (props) => {
@@ -68,11 +71,15 @@ const CodeElement = (props) => {
             <div className={styles.codeContent}>
                 {props.children}
             </div>
-            <IconButton className={styles.iconButton} aria-label="copy value" onClick={(e) => handleClick   (props.children)}>
-                <CopyIcon />
-            </IconButton>
+            {
+                !props.hideCopy &&
+                <IconButton className={styles.iconButton} aria-label="copy value" onClick={(e) => handleClick   (props.children)} >
+                    <CopyIcon />
+                </IconButton>
+            }
         </div>
     );
 };
+
 
 export default CodeElement;
