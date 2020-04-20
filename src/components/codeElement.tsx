@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         ...theme.typography.body2,
         padding: theme.spacing(2, 2),
-        margin: theme.spacing(2, 0),
+        margin: theme.spacing(1, 0),
         background: '#272c34',
         display: 'flex',
         alignItems: 'center',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        minWidth: '260px'
     },
     codeContent: {
         flex: '1',
