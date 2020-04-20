@@ -24,6 +24,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "src/components/MarkdownElement.js"
+    "**/*.tsx",
   ]
 }
