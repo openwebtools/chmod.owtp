@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex'
     },
     iconButton: {
-        padding: 5,
+        padding: '2px',
+        margin: '6px 6px 6px 12px'
     },
     hide: {
         display: 'none',
