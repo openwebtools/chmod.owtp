@@ -75,7 +75,7 @@ const CodeElement = (props) => {
             </div>
             {
                 !props.hideCopy &&
-                <IconButton className={styles.iconButton} aria-label="copy value" onClick={(e) => handleClick   (props.children)} >
+                <IconButton className={styles.iconButton} aria-label="copy result value" onClick={(e) => handleClick(props.children)} >
                     <CopyIcon />
                 </IconButton>
             }

@@ -92,14 +92,14 @@ const PermissionDisplay = (props) => {
       </div>
       <div className={styles.optionContainer}>
         <div>{permissionLabel}</div>
-        <ToggleButtonGroup value={alignment} exclusive onChange={(e: any, v: string) => handleOutputChange(e.target.textContent, v)} aria-label="text alignment" size="small">
-          <ToggleButton value="left" aria-label="left aligned" className={styles.optionsBtn}>
+        <ToggleButtonGroup value={alignment} exclusive onChange={(e: any, v: string) => handleOutputChange(e.target.textContent, v)} aria-label="Output mode options" size="small">
+          <ToggleButton value='left' aria-label='Switch to Octal Output Mode' className={styles.optionsBtn}>
             Octal
           </ToggleButton>
-          <ToggleButton value="center" aria-label="centered" className={styles.optionsBtn}>
+          <ToggleButton value='center' aria-label='Switch to Symbolic Output Mode' className={styles.optionsBtn}>
             Symbolic
           </ToggleButton>
-          <ToggleButton value="right" aria-label="right aligned" className={styles.optionsBtn}>
+          <ToggleButton value='right' aria-label='Switch to Permission display Output' className={styles.optionsBtn}>
             Display
           </ToggleButton>
         </ToggleButtonGroup>

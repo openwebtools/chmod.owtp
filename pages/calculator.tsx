@@ -133,52 +133,52 @@ const Calculator = () => {
   return (
     <MainLayout>
       <SubjectHeader {...header} />
-      <Box borderTop={1} borderBottom={0} borderColor="grey.700" className="tableWrapper">
+      <Box borderTop={1} borderBottom={0} borderColor='grey.700' className='tableWrapper'>
         <TableContainer>
-          <Table className={styles.table} aria-label="permission table">
+          <Table className={styles.table} aria-label='permission options table'>
             <TableHead>
               <TableRow>
-                <TableCell align="center">Permissions</TableCell>
-                <TableCell align="center">Owner</TableCell>
-                <TableCell align="center">Group</TableCell>
-                <TableCell align="center">Others</TableCell>
+                <TableCell align='center'>Permissions</TableCell>
+                <TableCell align='center'>Owner</TableCell>
+                <TableCell align='center'>Group</TableCell>
+                <TableCell align='center'>Others</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell align="center">Read</TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[0])} name="owner" onChange={(e) => handlePermChange(e, 0)} />
+                <TableCell align='center'>Read</TableCell>
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.owner[0])} name='owner' onChange={(e) => handlePermChange(e, 0)} />
                 </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.group[0])} name="group" onChange={(e) => handlePermChange(e, 0)} />
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.group[0])} name='group' onChange={(e) => handlePermChange(e, 0)} />
                 </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.all[0])} name="all" onChange={(e) => handlePermChange(e, 0)} />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell align="center">Write</TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[1])} name="owner" onChange={(e) => handlePermChange(e, 1)} />
-                </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.group[1])} name="group" onChange={(e) => handlePermChange(e, 1)} />
-                </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.all[1])} name="all" onChange={(e) => handlePermChange(e, 1)} />
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.all[0])} name='all' onChange={(e) => handlePermChange(e, 0)} />
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell align="center">Update</TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.owner[2])} name="owner" onChange={(e) => handlePermChange(e, 2)} />
+                <TableCell align='center'>Write</TableCell>
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.owner[1])} name='owner' onChange={(e) => handlePermChange(e, 1)} />
                 </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.group[2])} name="group" onChange={(e) => handlePermChange(e, 2)} />
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.group[1])} name='group' onChange={(e) => handlePermChange(e, 1)} />
                 </TableCell>
-                <TableCell align="center">
-                  <Checkbox checked={Boolean(perms.all[2])} name="all" onChange={(e) => handlePermChange(e, 2)} />
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.all[1])} name='all' onChange={(e) => handlePermChange(e, 1)} />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='center'>Update</TableCell>
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.owner[2])} name='owner' onChange={(e) => handlePermChange(e, 2)} />
+                </TableCell>
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.group[2])} name='group' onChange={(e) => handlePermChange(e, 2)} />
+                </TableCell>
+                <TableCell align='center'>
+                  <Checkbox checked={Boolean(perms.all[2])} name='all' onChange={(e) => handlePermChange(e, 2)} />
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -187,54 +187,54 @@ const Calculator = () => {
         <PermissionDisplay permissionValue={permissionResult} />
 
         <Divider />
-        <Grid container direction="row" justify="center" alignItems="center" spacing={2} className={styles.modeOptions}>         
+        <Grid container direction='row' justify='center' alignItems='center' spacing={2} className={styles.modeOptions}>         
           <Grid item xs={6} className={styles.modeOptionItem}>
-            <FormControl component="fieldset" >
-              <FormLabel component="legend">Special Modes</FormLabel>
+            <FormControl component='fieldset' >
+              <FormLabel component='legend'>Special Modes</FormLabel>
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox checked={perms.setuid} onChange={handleModeChange} name="setuid" />}
-                  label="setuid" />
+                  control={<Checkbox checked={perms.setuid} onChange={handleModeChange} name='setuid' />}
+                  label='setuid' />
                 <FormControlLabel
-                  control={<Checkbox checked={perms.setgid} onChange={handleModeChange} name="setgid" />}
-                  label="setgid" />
+                  control={<Checkbox checked={perms.setgid} onChange={handleModeChange} name='setgid' />}
+                  label='setgid' />
                 <FormControlLabel
-                  control={<Checkbox checked={perms.stickybit} onChange={handleModeChange} name="stickybit" />}
-                  label="stickybit" />
+                  control={<Checkbox checked={perms.stickybit} onChange={handleModeChange} name='stickybit' />}
+                  label='stickybit' />
               </FormGroup>
             </FormControl>
           </Grid>
 
           <Grid item xs={6} className={styles.modeOptionItem}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">File Options</FormLabel>
+            <FormControl component='fieldset'>
+              <FormLabel component='legend'>File Options</FormLabel>
               <FormGroup>
                 <FormControlLabel
                   control={<Checkbox checked={perms.fileOptions.folderOptions.recursive} onChange={handleRecursionChange}/>}
-                  label="Recursive" />
+                  label='Recursive' />
                 <FormControlLabel
                   control={<Checkbox checked={perms.fileOptions.folderOptions.preserveRoot} disabled={!perms.fileOptions.folderOptions.recursive} onChange={handlePreserveRootChange} />}
-                  label="Preserve Root" />
+                  label='Preserve Root' />
                 <FormControlLabel
-                  control={<Checkbox checked={Boolean(perms.fileOptions.referenceFile)} onChange={handleFileReference} name="stickybit" />}
-                  label="File Reference" />
+                  control={<Checkbox checked={Boolean(perms.fileOptions.referenceFile)} onChange={handleFileReference} name='stickybit' />}
+                  label='File Reference' />
               </FormGroup>
             </FormControl>
           </Grid>
         </Grid>
         <div className={styles.loggingOptions}>
           <span>Output Options</span>
-          <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label="text alignment" size="small">
-            <ToggleButton value="left" aria-label="left aligned" className={styles.loggingBtn}>
+          <ToggleButtonGroup value={alignment} exclusive onChange={handleOutputChange} aria-label='text alignment' size='small'>
+            <ToggleButton value='left' aria-label='left aligned' className={styles.loggingBtn}>
               Default
             </ToggleButton>
-            <ToggleButton value="center" aria-label="centered" className={styles.loggingBtn}>
+            <ToggleButton value='center' aria-label='centered' className={styles.loggingBtn}>
               Verbose
             </ToggleButton>
-            <ToggleButton value="right" aria-label="right aligned" className={styles.loggingBtn}>
+            <ToggleButton value='right' aria-label='right aligned' className={styles.loggingBtn}>
               Changes
             </ToggleButton>
-            <ToggleButton value="justify" aria-label="justified" className={styles.loggingBtn}>
+            <ToggleButton value='justify' aria-label='justified' className={styles.loggingBtn}>
               Silent
             </ToggleButton>
           </ToggleButtonGroup>
