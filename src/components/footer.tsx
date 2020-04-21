@@ -1,8 +1,7 @@
 import React from 'react';
 import {Typography, Link} from '@material-ui/core';
 import OwtIcon from './owtIcon';
-import createStyles from '@material-ui/core/styles/createStyles';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -12,7 +11,7 @@ const useStyles = makeStyles(() =>
       alignItems: 'center'
     },
     icon: {
-      paddingRight: '5px',
+      paddingRight: '6px',
       marginTop: '2px'
     }
   }),
@@ -25,7 +24,7 @@ const Footer = () => {
     <div>
       <Typography variant="body2" color="inherit" align="center">
         <Link href="https://openweb.tools" className={styles.root}>
-          <OwtIcon className={styles.icon} fontSize="large"/>
+          <OwtIcon className={styles.icon}/>
           {'| Open Web Tools © '}
           {new Date().getFullYear()}
         </Link>
