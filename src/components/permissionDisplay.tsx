@@ -6,6 +6,7 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { PermissionDisplayValues } from '../models/permissionModel';
 import CodeElement from './codeElement';
+import Typography from '@material-ui/core/Typography';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -20,7 +21,6 @@ const useStyles = makeStyles(() =>
       alignItems: 'center'
     },
     permissionContainer: {
-      display: 'flex',
       flexDirection: 'row',
       width: '100%',
       justifyContent: 'center'
@@ -86,8 +86,10 @@ const PermissionDisplay = (props) => {
   return (
     <Paper className={styles.root} elevation={0}>
       <div className={styles.permissionContainer}>
-        <CodeElement >
-          {permissionValue}
+        <CodeElement content={permissionValue}>
+          <Typography variant="h6" className={styles.label} >
+            {permissionValue}
+          </Typography>
         </CodeElement>
       </div>
       <div className={styles.optionContainer}>

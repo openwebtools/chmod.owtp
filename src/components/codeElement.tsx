@@ -38,10 +38,11 @@ const CodeElement = (props) => {
     const styles = useStyles();
 
     const [open, setOpen] = React.useState(false);
+    const codeContent = props.content ?? props.children;
 
     const handleClick = (value) => {
         setOpen(true);
-        copyToClipboard(value);
+        copyToClipboard(codeContent);
     };
 
     const handleClose = (event, reason) => {
