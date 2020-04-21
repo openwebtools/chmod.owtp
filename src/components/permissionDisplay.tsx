@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import MuiAlert from '@material-ui/lab/Alert';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { PermissionDisplayValues } from '../models/permissionModel';
 import CodeElement from './codeElement';
 import Typography from '@material-ui/core/Typography';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const useStyles = makeStyles(() =>
   createStyles({
