@@ -14,18 +14,20 @@ const useStyles = makeStyles((theme) => ({
     root: {
         ...theme.typography.body2,
         padding: theme.spacing(2, 2),
-        margin: theme.spacing(2, 0),
+        margin: theme.spacing(1, 0),
         background: '#272c34',
         display: 'flex',
         alignItems: 'center',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        minWidth: '260px'
     },
     codeContent: {
         flex: '1',
         display: 'flex'
     },
     iconButton: {
-        padding: 5,
+        padding: '2px',
+        margin: '6px 6px 6px 12px'
     },
     hide: {
         display: 'none',
@@ -36,10 +38,11 @@ const CodeElement = (props) => {
     const styles = useStyles();
 
     const [open, setOpen] = React.useState(false);
+    const codeContent = props.content ?? props.children;
 
     const handleClick = (value) => {
         setOpen(true);
-        copyToClipboard(value);
+        copyToClipboard(codeContent);
     };
 
     const handleClose = (event, reason) => {
@@ -73,7 +76,7 @@ const CodeElement = (props) => {
             </div>
             {
                 !props.hideCopy &&
-                <IconButton className={styles.iconButton} aria-label="copy value" onClick={(e) => handleClick   (props.children)} >
+                <IconButton className={styles.iconButton} aria-label="copy result value" onClick={(e) => handleClick(props.children)} >
                     <CopyIcon />
                 </IconButton>
             }
