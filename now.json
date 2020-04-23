@@ -1,0 +1,15 @@
+{
+    "name": "openwebtools/chmod-owtp",
+    "version": 2,
+    "scope": "Open Web Tools",
+    "public": false,
+    "github": {
+      "enabled": false
+    },
+    "builds": [
+      { "src": "./public/**", "use": "@now/static" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "public/$1" }
+    ]
+  }
