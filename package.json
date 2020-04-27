@@ -22,7 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.11",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.50",
+    "@material-ui/lab": "^4.0.0-alpha.51",
     "@mdx-js/loader": "^1.5.9",
     "@next/mdx": "^9.3.5",
     "@types/styled-components": "^5.1.0",
