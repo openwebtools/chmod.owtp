@@ -24,7 +24,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.51",
     "@mdx-js/loader": "^1.6.1",
-    "@next/mdx": "^9.3.6",
+    "@next/mdx": "^10.0.3",
     "@types/styled-components": "^5.1.0",
     "markdown-to-jsx": "^6.11.1",
     "next": "^9.3.6",
