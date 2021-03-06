@@ -5,9 +5,21 @@ import theme from "../theme/theme";
 
 function App({ Component, pageProps }: AppProps): React.ReactNode {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <React.Fragment>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+      <style jsx global>
+        {`
+          html,
+          body,
+          #app,
+          #__next {
+            height: 100%;
+          }
+        `}
+      </style>
+    </React.Fragment>
   );
 }
 
