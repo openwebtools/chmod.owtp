@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = {
   initialColorMode: "light" as const,
@@ -6,19 +7,20 @@ const config = {
 };
 
 const styles = {
-  global: {
+  global: (props: any) => ({
     body: {
-      bg: "white",
-      color: "black",
+      bg: mode("white", "black")(props),
+      color: mode("black", "white")(props),
     },
-  },
+  }),
 };
 
 const theme = extendTheme({
   colors: {
-    white: "#FEFEFE",
-    black: "#030303",
+    white: "#f2f2f7",
+    black: "#1c1c1e",
   },
+  shadows: {},
   styles: styles,
   ...config,
 });

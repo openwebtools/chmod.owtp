@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
 
 const IndexPage = () => (
-  <Layout title="chmod calculator | Open Web Tools">
-    This is the Index Page
+  <Layout title="chmod examples | Open Web Tools">
+    This is the Examples Page
   </Layout>
 );
 
