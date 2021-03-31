@@ -1,4 +1,4 @@
-import { PermissionRecursiveModel } from "./PermissionRecursiveModel";
+import { PermissionRecursiveModel } from "./permissionRecursiveModel";
 
 export interface PermissionFileOptions {
   folderOptions: PermissionRecursiveModel;

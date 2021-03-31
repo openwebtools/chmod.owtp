@@ -10,4 +10,5 @@ export interface PermissionModel {
   stickybit: boolean;
   fileOptions: PermissionFileOptions;
   logging: PermissionLoggingOptions;
+  [key: string]: any;
 }
