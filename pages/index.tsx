@@ -300,6 +300,7 @@ const IndexPage = () => {
               </Checkbox>
               <Checkbox
                 isChecked={Boolean(perms.fileOptions.referenceFile)}
+                isDisabled={true}
                 onChange={handleFileReference}
               >
                 File Reference
