@@ -3,7 +3,6 @@ import {
   ButtonGroup,
   Center,
   Checkbox,
-  HStack,
   Table,
   TableCaption,
   Tbody,
@@ -18,6 +17,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import Layout from "../components/Layout";
+import PermissionDisplay from "../components/PermissionDisplay";
+import ToggleButton from "../components/ToggleButton";
 import { PermissionLoggingOptions } from "../models/permissionLoggingOptions";
 import { PermissionModel } from "../models/permissionModel";
 import { PermissionResult } from "../models/permissionResult";
@@ -35,15 +36,10 @@ const IndexPage = () => {
     updatePermission(newPerms);
   }, []);
 
-  const [alignment, setAlignment] = React.useState<string | null>("left");
-
-  const handleOutputChange = (event: any, newAlignment: string | null) => {
-    setAlignment(newAlignment);
+  const handleOutputChange = (key: string) => {
     const newPerms = { ...perms };
     newPerms.logging =
-      PermissionLoggingOptions[
-        event.target.textContent as keyof typeof PermissionLoggingOptions
-      ];
+      PermissionLoggingOptions[key as keyof typeof PermissionLoggingOptions];
     updatePermission(newPerms);
   };
 
@@ -244,13 +240,7 @@ const IndexPage = () => {
         </Tbody>
       </Table>
       <Center m={8}>
-        <ButtonGroup size="sm" isAttached variant="outline">
-          <Button mr="-px">Octal</Button>
-          <Button mr="-px" variant="solid" colorScheme="blue">
-            Symbolic
-          </Button>
-          <Button mr="-px">Display</Button>
-        </ButtonGroup>
+        <PermissionDisplay permission={permissionResult}></PermissionDisplay>
       </Center>
       <SimpleGrid spacing={8} columns={2}>
         <VStack align="center">
@@ -310,14 +300,12 @@ const IndexPage = () => {
         </VStack>
       </SimpleGrid>
       <Center m={8}>
-        <ButtonGroup size="sm" isAttached variant="outline">
-          <Button mr="-px">Default</Button>
-          <Button mr="-px" variant="solid" colorScheme="blue">
-            Verbose
-          </Button>
-          <Button mr="-px">Changes</Button>
-          <Button mr="-px">Silent</Button>
-        </ButtonGroup>
+        <ToggleButton
+          items={["Default", "Verbose", "Changes", "Silent"]}
+          initial="Default"
+          size="sm"
+          onToggle={handleOutputChange}
+        ></ToggleButton>
       </Center>
     </Layout>
   );
