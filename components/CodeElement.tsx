@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { CopyIcon } from "@chakra-ui/icons";
 import {
-  Box,
   BoxProps,
-  Code,
   Flex,
   IconButton,
   useClipboard,
@@ -22,13 +20,23 @@ const CodeContainer = (props: BoxProps) => (
   />
 );
 
+const CopyButton = (props: any) => (
+  <IconButton
+    aria-label="Copy Code"
+    icon={<CopyIcon />}
+    zIndex="1"
+    onClick={props.onClick}
+    {...props}
+  />
+);
+
 const CodeElement = (props: any) => {
   const toast = useToast();
   const { children } = props;
-  const [editorCode] = useState(children);
+  const { onCopy } = useClipboard(children);
 
-  const onCopy = () => {
-    useClipboard(editorCode);
+  const handleCopyClick = () => {
+    onCopy();
     showSuccessToast();
   };
 
@@ -45,13 +53,7 @@ const CodeElement = (props: any) => {
       <Text flex="1" as="kbd">
         {children}
       </Text>
-      <IconButton
-        aria-label="Copy Code"
-        icon={<CopyIcon />}
-        zIndex="1"
-        onClick={onCopy}
-        {...props}
-      />
+      {props.hideCopy ? null : <CopyButton onClick={handleCopyClick} />}
     </CodeContainer>
   );
 };
