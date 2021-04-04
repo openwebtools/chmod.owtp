@@ -274,7 +274,7 @@ const IndexPage = () => {
         <VStack>
           <Text>File Options</Text>
           <VStack align="left">
-            <CheckboxGroup size="lg">
+            <CheckboxGroup size="lg" colorScheme="blue">
               <Checkbox
                 isChecked={perms.fileOptions.folderOptions.recursive}
                 onChange={handleRecursionChange}
@@ -288,13 +288,15 @@ const IndexPage = () => {
               >
                 Preserve Root
               </Checkbox>
+              {/* 
+              // To be introduced later
               <Checkbox
                 isChecked={Boolean(perms.fileOptions.referenceFile)}
                 isDisabled={true}
                 onChange={handleFileReference}
               >
                 File Reference
-              </Checkbox>
+              </Checkbox> */}
             </CheckboxGroup>
           </VStack>
         </VStack>

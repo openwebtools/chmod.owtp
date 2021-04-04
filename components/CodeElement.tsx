@@ -50,7 +50,7 @@ const CodeElement = (props: any) => {
 
   return (
     <CodeContainer p={4} overflow="hidden">
-      <Text flex="1" as="kbd">
+      <Text flex="1" as="kbd" color="white">
         {children}
       </Text>
       {props.hideCopy ? null : <CopyButton onClick={handleCopyClick} />}
