@@ -1,6 +1,4 @@
 import {
-  Button,
-  ButtonGroup,
   Center,
   Checkbox,
   Table,
@@ -14,6 +12,7 @@ import {
   Text,
   SimpleGrid,
   CheckboxGroup,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import Layout from "../components/Layout";
@@ -108,9 +107,12 @@ const IndexPage = () => {
     }
     updatePermission(newPerms);
   };
+
+  const tableVarient = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+
   return (
     <Layout title="chmod calculator | Open Web Tools">
-      <Table variant="simple" size="lg">
+      <Table variant="simple" size={tableVarient}>
         <TableCaption placement="top">
           A free utility to calculate the numeric (octal) or symbolic value for
           a file or folder permissions to use with chmod command
