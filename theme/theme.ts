@@ -17,7 +17,7 @@ const styles = {
 
 const theme = extendTheme({
   colors: {
-    white: "#f2f2f7",
+    soothingWhite: "#fbfbff",
     black: "#1c1c1e",
   },
   shadows: {},
