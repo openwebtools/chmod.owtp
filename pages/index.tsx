@@ -241,10 +241,13 @@ const IndexPage = () => {
           </Tr>
         </Tbody>
       </Table>
-      <Center m={8}>
-        <PermissionDisplay permission={permissionResult}></PermissionDisplay>
+      <Center mt={8} p={4}>
+        <PermissionDisplay
+          permission={permissionResult}
+          w={["100%", "100%", "60%", "60%"]}
+        ></PermissionDisplay>
       </Center>
-      <SimpleGrid spacing={8} columns={2}>
+      <SimpleGrid spacing={8} columns={2} p={4}>
         <VStack align="center">
           <Text>Special Modes</Text>
           <VStack align="left">

@@ -28,7 +28,7 @@ const PermissionDisplay = (props: any) => {
   };
 
   return (
-    <Box w="60%">
+    <Box {...props}>
       <Text align="center">{permissionLabel}</Text>
       <CodeElement>{permissionValue}</CodeElement>
       <Center>

@@ -16,9 +16,7 @@ const Layout = ({ children, title }: Props) => {
         <title>{title}</title>
       </Head>
       <Toolbar />
-      <Box p={4} flex="1">
-        {children}
-      </Box>
+      <Box flex="1">{children}</Box>
       <Footer />
     </Flex>
   );

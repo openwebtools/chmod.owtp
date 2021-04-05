@@ -34,7 +34,11 @@ const Toolbar = (props: any) => {
       {...props}
       direction={["column", "row", "row", "row"]}
     >
-      <Flex align="center" justify="space-between" w="100%">
+      <Flex
+        align="center"
+        justify="space-between"
+        w={["100%", "auto", "auto", "auto"]}
+      >
         <NextLink href="/" passHref>
           <Link>
             <Heading as="h1" size="md">
