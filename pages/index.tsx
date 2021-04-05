@@ -290,15 +290,14 @@ const IndexPage = () => {
               >
                 Preserve Root
               </Checkbox>
-              {/* 
-              // To be introduced later
+              {/* To be introduced later */}
               <Checkbox
                 isChecked={Boolean(perms.fileOptions.referenceFile)}
                 isDisabled={true}
                 onChange={handleFileReference}
               >
                 File Reference
-              </Checkbox> */}
+              </Checkbox>
             </CheckboxGroup>
           </VStack>
         </VStack>

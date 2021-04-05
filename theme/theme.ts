@@ -19,6 +19,14 @@ const theme = extendTheme({
   colors: {
     soothingWhite: "#fbfbff",
     black: "#1c1c1e",
+    dark: {
+      200: "black",
+      500: "black",
+    },
+    light: {
+      200: "#fbfbff",
+      500: "#fbfbff",
+    },
   },
   shadows: {},
   styles: styles,

@@ -7,18 +7,12 @@ import {
   useClipboard,
   useToast,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 
-const CodeContainer = (props: BoxProps) => (
-  <Flex
-    padding="2"
-    rounded="8px"
-    my="8"
-    bg="#011627"
-    {...props}
-    align="center"
-  />
-);
+const CodeContainer = (props: BoxProps) => {
+  return <Flex padding="2" rounded="8px" my="8" {...props} align="center" />;
+};
 
 const CopyButton = (props: any) => (
   <IconButton
@@ -34,6 +28,7 @@ const CodeElement = (props: any) => {
   const toast = useToast();
   const { children } = props;
   const { onCopy } = useClipboard(children);
+  const { colorMode } = useColorMode();
 
   const handleCopyClick = () => {
     onCopy();
@@ -49,11 +44,24 @@ const CodeElement = (props: any) => {
     });
 
   return (
-    <CodeContainer p={4} overflow="hidden">
-      <Text flex="1" as="kbd" color="white">
+    <CodeContainer
+      p={4}
+      overflow="hidden"
+      bg={colorMode === "light" ? "black" : "soothingWhite"}
+    >
+      <Text
+        flex="1"
+        as="kbd"
+        color={colorMode === "light" ? "soothingWhite" : "black"}
+      >
         {children}
       </Text>
-      {props.hideCopy ? null : <CopyButton onClick={handleCopyClick} />}
+      {props.hideCopy ? null : (
+        <CopyButton
+          onClick={handleCopyClick}
+          bg={colorMode === "light" ? "soothingWhite" : "black"}
+        />
+      )}
     </CodeContainer>
   );
 };
