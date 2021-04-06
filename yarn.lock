@@ -398,13 +398,6 @@
     compute-scroll-into-view "1.0.14"
     copy-to-clipboard "3.3.1"
 
-"@chakra-ui/icon@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-1.1.2.tgz#b57f53c801b515301f26bc829957f32b7ca5fb8d"
-  integrity sha512-Gp/G0CZ8X8RWJWrs8jUm1dfA+5lS4zgNd078zQAj+yppnyhRGEGuZ6jAVJowtF+gbljZttmZwfXUgV3WpKnT/A==
-  dependencies:
-    "@chakra-ui/utils" "1.3.0"
-
 "@chakra-ui/icon@1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-1.1.4.tgz#7e9d6635965ab555e2a796c1d4d3d1bd7f6f1fe5"
@@ -412,12 +405,12 @@
   dependencies:
     "@chakra-ui/utils" "1.5.0"
 
-"@chakra-ui/icons@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-1.0.6.tgz#74add5bfedb39c49a76f320062cbadfeadd31604"
-  integrity sha512-r2jZQ7DOGKWMOpWF2LXapn60brSSmenRwBC/1pj/vqWB8XQcgx74QB+ZsYsOUrRnlM83xpay9S6D8mv/m4cdzw==
+"@chakra-ui/icons@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-1.0.8.tgz#151694d73bfa7aaedbaaff633dae8cb1d83cd2ac"
+  integrity sha512-cguOYbIJG5krhnm0LGKtOariJYv36z3lFkyJtRuWCwJMdl3ruxZVynsAcqnu4a5WJUINDMQzj36+k7u72gG0qA==
   dependencies:
-    "@chakra-ui/icon" "1.1.2"
+    "@chakra-ui/icon" "1.1.4"
     "@types/react" "^17.0.0"
 
 "@chakra-ui/image@1.0.10":
@@ -770,16 +763,6 @@
     "@chakra-ui/hooks" "1.3.0"
     "@chakra-ui/utils" "1.5.0"
 
-"@chakra-ui/utils@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.3.0.tgz#7bfe8ffd4a8613ec562f51d27a08c4c430b88132"
-  integrity sha512-MezHglxjRaAZIQDVAi1uOMVNd4a0zKGmV4cvp8+r3xTmGMU/XJCC5J49qufEqLLJbR31Y7UiCRTz86O66s1r5A==
-  dependencies:
-    "@types/lodash.mergewith" "4.6.6"
-    "@types/object-assign" "4.0.30"
-    css-box-model "1.2.1"
-    lodash.mergewith "4.6.2"
-
 "@chakra-ui/utils@1.5.0", "@chakra-ui/utils@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.5.0.tgz#8ba5ac1353d85c7fbdfa843c8023d9a2b4a2915d"
@@ -1125,11 +1108,6 @@
   version "12.20.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.4.tgz#73687043dd00fcb6962c60fbf499553a24d6bdf2"
   integrity sha512-xRCgeE0Q4pT5UZ189TJ3SpYuX/QGl6QIAOAIeDSbAVAd2gX1NxSZup4jNVK7cxIeP8KDSbJgcckun495isP1jQ==
-
-"@types/object-assign@4.0.30":
-  version "4.0.30"
-  resolved "https://registry.yarnpkg.com/@types/object-assign/-/object-assign-4.0.30.tgz#8949371d5a99f4381ee0f1df0a9b7a187e07e652"
-  integrity sha1-iUk3HVqZ9Dge4PHfCpt6GH4H5lI=
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
