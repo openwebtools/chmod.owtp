@@ -235,7 +235,7 @@ const IndexPage = () => {
           </Tbody>
         </CheckboxGroupWrapper>
       </Table>
-      <Center mt={8} p={4}>
+      <Center mt={[4, 4, 6, 8]} pr={4} pl={4}>
         <PermissionDisplay
           permission={permissionResult}
           w={["100%", "100%", "60%", "60%"]}
