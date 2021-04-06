@@ -43,9 +43,8 @@ jobs:
 
       - name: Set Preview Deploy Flag
         if: github.event_name == 'pull_request'
-        uses: allenevans/set-env@v1.1.0
-        with:
-          PROD_FLAG: ""
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
 
       - name: Deploy to Hosting Provider
         uses: amondnet/now-deployment@v2.0.2
