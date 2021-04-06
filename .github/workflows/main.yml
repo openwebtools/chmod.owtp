@@ -47,11 +47,11 @@ jobs:
           echo "action_state=yellow" >> $GITHUB_ENV
 
       - name: Deploy to Hosting Provider
-        uses: amondnet/now-deployment@v2.0.2
+        uses: amondnet/vercel-action@v20
         with:
-          zeit-token: ${{ secrets.ZEIT_TOKEN }}
-          now-args: ${{ env.PROD_FLAG }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: ${{ env.PROD_FLAG }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-deployment: true
-          now-org-id: ${{ secrets.NOW_ORG_ID}}
-          now-project-id: ${{ secrets.NOW_PROJECT_ID}}
+          vercel-org-id: ${{ secrets.NOW_ORG_ID}}
+          vercel-project-id: ${{ secrets.NOW_PROJECT_ID}}
