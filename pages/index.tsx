@@ -14,14 +14,14 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import CheckboxGroupWrapper from "../components/CheckboxGroupWrapper";
-import Layout from "../components/Layout";
-import PermissionDisplay from "../components/PermissionDisplay";
-import ToggleButton from "../components/ToggleButton";
-import { PermissionLoggingOptions } from "../models/permissionLoggingOptions";
-import { PermissionModel } from "../models/permissionModel";
-import { PermissionResult } from "../models/permissionResult";
-import PermissionService from "../services/permissionService";
+import CheckboxGroupWrapper from "../src/components/CheckboxGroupWrapper";
+import Layout from "../src/components/Layout";
+import PermissionDisplay from "../src/components/PermissionDisplay";
+import ToggleButton from "../src/components/ToggleButton";
+import { PermissionLoggingOptions } from "../src/models/permissionLoggingOptions";
+import { PermissionModel } from "../src/models/permissionModel";
+import { PermissionResult } from "../src/models/permissionResult";
+import PermissionService from "../src/services/permissionService";
 
 const IndexPage = () => {
   const permissionService = new PermissionService();
@@ -235,7 +235,7 @@ const IndexPage = () => {
           </Tbody>
         </CheckboxGroupWrapper>
       </Table>
-      <Center mt={8} p={4}>
+      <Center mt={[4, 4, 6, 8]} pr={4} pl={4}>
         <PermissionDisplay
           permission={permissionResult}
           w={["100%", "100%", "60%", "60%"]}

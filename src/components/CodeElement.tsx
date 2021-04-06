@@ -43,6 +43,13 @@ const CodeElement = (props: any) => {
       isClosable: true,
     });
 
+  const copyBtn = props.hideCopy ? null : (
+    <CopyButton
+      onClick={handleCopyClick}
+      bg={colorMode === "light" ? "soothingWhite" : "black"}
+    />
+  );
+
   return (
     <CodeContainer
       p={4}
@@ -56,12 +63,7 @@ const CodeElement = (props: any) => {
       >
         {children}
       </Text>
-      {props.hideCopy ? null : (
-        <CopyButton
-          onClick={handleCopyClick}
-          bg={colorMode === "light" ? "soothingWhite" : "black"}
-        />
-      )}
+      {copyBtn}
     </CodeContainer>
   );
 };
