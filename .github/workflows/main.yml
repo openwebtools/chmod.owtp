@@ -23,6 +23,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -33,23 +36,22 @@ jobs:
         run: npm install
 
       - name: Scan with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v1.1
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Set Preview Deploy Flag
         if: github.event_name == 'pull_request'
-        uses: allenevans/set-env@v1.1.0
-        with:
-          PROD_FLAG: ""
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
 
       - name: Deploy to Hosting Provider
-        uses: amondnet/now-deployment@v2.0.2
+        uses: amondnet/vercel-action@v20
         with:
-          zeit-token: ${{ secrets.ZEIT_TOKEN }}
-          now-args: ${{ env.PROD_FLAG }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: ${{ env.PROD_FLAG }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           github-deployment: true
-          now-org-id: ${{ secrets.NOW_ORG_ID}}
-          now-project-id: ${{ secrets.NOW_PROJECT_ID}}
+          vercel-org-id: ${{ secrets.NOW_ORG_ID}}
+          vercel-project-id: ${{ secrets.NOW_PROJECT_ID}}
