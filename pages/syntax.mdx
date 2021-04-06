@@ -1,65 +1,99 @@
-import SubjectHeader from '../src/components/subjectHeader';
-import MainLayout from '../src/layouts/mainLayout';
-import { Divider } from '@material-ui/core';
-import CodeElement from '../src/components/codeElement.tsx';
-import Typography from '@material-ui/core/Typography';
+import Layout from "../components/Layout";
+import CodeElement from "../components/CodeElement";
+import { Flex, Center, Heading } from "@chakra-ui/react";
 
-
-export const header = {
-    header: '',
-    subHeader: 'Syntax of chmod command',
-};
-
-<MainLayout>
-  <SubjectHeader {...header} />
-  <Divider/>
-
->### chmod - change file mode bits.
->### In symbolic mode.
-<CodeElement hideCopy='true'>
-  chmod [OPTION]... MODE[,MODE]...  file_name...
+<Layout title="chmod syntax | Open Web Tools" p={4}
+  >
+  <Center>
+    <Flex flexDirection="column" w={["100%", "100%", "60%", "60%"]}>
+<Heading as="h3" align="left" size="md">
+    chmod - change file mode bits
+</Heading>
+<Heading as="h6" align="center" size="md">
+  In symbolic mode
+</Heading>
+<CodeElement hideCopy="true">
+  chmod [OPTION]... MODE[,MODE]... file_name...
 </CodeElement>
 
->### In octal mode.
-<CodeElement hideCopy='true'>
-  chmod [OPTION]... OCTAL_MODE  file_name...
-</CodeElement >
+### In octal mode.
 
->### In file reference mode.
-<CodeElement hideCopy='true'>
-  chmod [OPTION]... --reference=referenced_file_name  file_name...
+<CodeElement hideCopy="true">
+  chmod [OPTION]... OCTAL_MODE file_name...
 </CodeElement>
 
->### Options are:
-<CodeElement hideCopy='true'>
-Change the mode of each file_name to specified MODE.<br/><br/>
--c, --changes<br/>
-Shows an output only when a change is made<br/><br/>
---no-preserve-root<br/>
-do not treat '/' specially (the default)<br/><br/>
---preserve-root<br/> 
-fail to operate recursively on '/'<br/><br/>
--f, --silent, --quiet<br/> 
-suppress most error messages<br/><br/>
--v, --verbose<br/> 
-output a diagnostic for every file processed<br/><br/>
---reference=reference_file_name<br/> 
-use reference_file_name's mode instead of MODE values<br/><br/>
--R, --recursive<br/> 
-change files and directories recursively<br/><br/>
---help<br/> 
-display this help and exit<br/><br/>
---version<br/> 
-output version information and exit<br/><br/>
-Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+'.
+### In file reference mode.
+
+<CodeElement hideCopy="true">
+  chmod [OPTION]... --reference=referenced_file_name file_name...
 </CodeElement>
 
->### setuid and setgid Bits
-**chmod** clears the set-group-ID bit of a regular file if the file's group ID does not match the user's effective group ID or one of the user's supplementary group IDs, unless the user has appropriate privileges. Additional restrictions may cause the set-user-ID and set-group-ID bits of MODE or RFILE to be ignored. This behavior depends on the policy and functionality of the underlying chmod system call. When in doubt, check the underlying system behavior.
+### Options are:
 
->**chmod** preserves a directory's set-user-ID and set-group-ID bits unless you explicitly specify otherwise. You can set or clear the bits with symbolic modes like u+s and g-s, and you can set (but not clear) the bits with a numeric mode.
+<CodeElement hideCopy="true">
+  Change the mode of each file_name to specified MODE.
+  <br />
+  <br />
+  -c, --changes
+  <br />
+  Shows an output only when a change is made
+  <br />
+  <br />
+  --no-preserve-root
+  <br />
+  do not treat &lsquo;/&lsquo; specially (the default)
+  <br />
+  <br />
+  --preserve-root
+  <br />
+  fail to operate recursively on &lsquo;/&lsquo;
+  <br />
+  <br />
+  -f, --silent, --quiet
+  <br />
+  suppress most error messages
+  <br />
+  <br />
+  -v, --verbose
+  <br />
+  output a diagnostic for every file processed
+  <br />
+  <br />
+  --reference=reference_file_name
+  <br />
+  use reference_file_name&apos;s mode instead of MODE values
+  <br />
+  <br />
+  -R, --recursive
+  <br />
+  change files and directories recursively
+  <br />
+  <br />
+  --help
+  <br />
+  display this help and exit
+  <br />
+  <br />
+  --version
+  <br />
+  output version information and exit
+  <br />
+  <br />
+  Each MODE is of the form &lsquo;[ugoa]*([-+=]([rwxXst]*|[ugo]))+&lsquo;.
+</CodeElement>
 
->### Restricted Deletion Flag or Sticky Bit
-The restricted deletion flag or sticky bit is a single bit, whose interpretation depends on the file type. For directories, it prevents unprivileged users from removing or renaming a file in the directory unless they own the file or the directory; this is called the restricted deletion flag for the directory, and is commonly found on world-writable directories like /tmp. For regular files on some older systems, the bit saves the program's text image on the swap device so it will load more quickly when run; this is called the sticky bit.
+<Heading as="h6" align="center" size="md">
+  setuid and setgid Bits
+</Heading>
 
-</MainLayout>
+**chmod** clears the set-group-ID bit of a regular file if the file&apos;s group ID does not match the user&apos;s effective group ID or one of the user&apos;s supplementary group IDs, unless the user has appropriate privileges. Additional restrictions may cause the set-user-ID and set-group-ID bits of MODE or RFILE to be ignored. This behavior depends on the policy and functionality of the underlying chmod system call. When in doubt, check the underlying system behavior.
+
+**chmod** preserves a directory&apos;s set-user-ID and set-group-ID bits unless you explicitly specify otherwise. You can set or clear the bits with symbolic modes like u+s and g-s, and you can set (but not clear) the bits with a numeric mode.
+
+### Restricted Deletion Flag or Sticky Bit
+
+The restricted deletion flag or sticky bit is a single bit, whose interpretation depends on the file type. For directories, it prevents unprivileged users from removing or renaming a file in the directory unless they own the file or the directory; this is called the restricted deletion flag for the directory, and is commonly found on world-writable directories like /tmp. For regular files on some older systems, the bit saves the program&apos;s text image on the swap device so it will load more quickly when run; this is called the sticky bit.
+
+</Flex>
+  </Center>
+</Layout>

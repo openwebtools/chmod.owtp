@@ -1,18 +1,17 @@
-import { PermissionModel, PermissionLoggingOptions, PermissionResult } from '../models/permissionModel';
+import { PermissionLoggingOptions } from "../models/permissionLoggingOptions";
+import { PermissionModel } from "../models/permissionModel";
+import { PermissionResult } from "../models/permissionResult";
 
-
-
-const chmod = 'chmod';
-const argumentPrefix = '--';
-const delimiter = '-';
-const allPerm = 'a+rwx';
-const noPerm = 'a-rwx';
+const chmod = "chmod";
+const argumentPrefix = "--";
+const delimiter = "-";
+const allPerm = "a+rwx";
+const noPerm = "a-rwx";
 /**
  * A service which performs the logic of calculating
  * and converting permissions.
  */
 export default class PermissionService {
-
   /**
    * Returns the permission calculation result.
    * @param value Permission value data.
@@ -21,7 +20,7 @@ export default class PermissionService {
     return {
       octal: this.computeCommand(value, true),
       symbolic: this.computeCommand(value, false),
-      display: this.computeSymbolicDisplay(value)
+      display: this.computeSymbolicDisplay(value),
     };
   }
 
@@ -39,20 +38,19 @@ export default class PermissionService {
       valueResult = this.computeSymbolicCommand(value);
     }
 
-    if(value.fileOptions.referenceFile !== '') {
+    if (value.fileOptions.referenceFile !== "") {
       valueResult = `${argumentPrefix}reference=${value.fileOptions.referenceFile}`;
     }
 
-    if(value.fileOptions.folderOptions.recursive) {
-      if(value.fileOptions.folderOptions.preserveRoot) {
+    if (value.fileOptions.folderOptions.recursive) {
+      if (value.fileOptions.folderOptions.preserveRoot) {
         valueResult = `${argumentPrefix}preserve-root ${valueResult}`;
       }
 
       valueResult = `-R ${valueResult}`;
     }
 
-
-    if(value.logging !== PermissionLoggingOptions.Default) {
+    if (value.logging !== PermissionLoggingOptions.Default) {
       valueResult = `${argumentPrefix}${value.logging} ${valueResult}`;
     }
 
@@ -67,13 +65,17 @@ export default class PermissionService {
     const owner = this.binaryToNumber(this.arrayToString(value.owner));
     const all = this.binaryToNumber(this.arrayToString(value.all));
     const group = this.binaryToNumber(this.arrayToString(value.group));
-    const special = this.computeNumericalSpecialPermissions(value.setuid, value.setgid, value.stickybit);
+    const special = this.computeNumericalSpecialPermissions(
+      value.setuid,
+      value.setgid,
+      value.stickybit
+    );
 
     let numeric: string;
     if (special === 0) {
       numeric = this.arrayToString([owner, group, all]);
     } else {
-      numeric = this.arrayToString([special, owner, group, all])
+      numeric = this.arrayToString([special, owner, group, all]);
     }
 
     // replace the leading 0 value (If special permissions are not set).
@@ -87,15 +89,15 @@ export default class PermissionService {
   private computeSymbolicDisplay(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
     if (value.setuid) {
-      owner = owner.replace('x', 's');
+      owner = owner.replace("x", "s");
     }
     let group = this.binaryToSymbolic(value.group);
     if (value.setgid) {
-      group = group.replace('x', 's');
+      group = group.replace("x", "s");
     }
     let all = this.binaryToSymbolic(value.all);
     if (value.stickybit) {
-      all = all.replace('x', 't');
+      all = all.replace("x", "t");
     }
     return this.arrayToString([owner, group, all]);
   }
@@ -107,18 +109,18 @@ export default class PermissionService {
   private computeSymbolicCommand(value: PermissionModel): string {
     let owner = this.binaryToSymbolic(value.owner);
     if (value.setuid) {
-      owner += 's';
+      owner += "s";
     }
     let group = this.binaryToSymbolic(value.group);
     if (value.setgid) {
-      group += 's';
+      group += "s";
     }
     const all = this.binaryToSymbolic(value.all);
 
     let result = this.mergeSymbolicCommands(owner, group, all);
 
     if (value.stickybit) {
-      result += ',+t';
+      result += ",+t";
     }
 
     return result;
@@ -137,7 +139,7 @@ export default class PermissionService {
    * @param values Values array.
    */
   private arrayToString(values: any[]): string {
-    return values.join('');
+    return values.join("");
   }
 
   /**
@@ -148,15 +150,15 @@ export default class PermissionService {
     const symbolic = [delimiter, delimiter, delimiter];
 
     if (binary[0] == 1) {
-      symbolic[0] = 'r';
+      symbolic[0] = "r";
     }
 
     if (binary[1] == 1) {
-      symbolic[1] = 'w';
+      symbolic[1] = "w";
     }
 
     if (binary[2] == 1) {
-      symbolic[2] = 'x';
+      symbolic[2] = "x";
     }
 
     return this.arrayToString(symbolic);
@@ -172,22 +174,32 @@ export default class PermissionService {
     const combinedString = this.arrayToString([owner, group, all]);
     if (!combinedString.includes(delimiter)) {
       return allPerm;
-    } else if (combinedString.match(/-/g).length == combinedString.length) {
+    } else if (combinedString.match(/-/g)?.length == combinedString.length) {
       return noPerm;
     } else {
-      const result = `${this.computeSymbolicIndividual('u+', owner)},${this.computeSymbolicIndividual('g+', group)},${this.computeSymbolicIndividual('o+', all)}`;
+      const result = `${this.computeSymbolicIndividual(
+        "u+",
+        owner
+      )},${this.computeSymbolicIndividual(
+        "g+",
+        group
+      )},${this.computeSymbolicIndividual("o+", all)}`;
 
-      const resultProcessed = result.replace(/-/g, '').split(',').filter((item) =>{
-        return item !== '';
-      }).join(',');
+      const resultProcessed = result
+        .replace(/-/g, "")
+        .split(",")
+        .filter((item) => {
+          return item !== "";
+        })
+        .join(",");
       return `${noPerm},${resultProcessed}`;
     }
   }
 
   private computeSymbolicIndividual(prefix: string, value: string): string {
     const match = value.match(/-/g);
-    if(match && match.length === value.length) {
-      return ''
+    if (match && match.length === value.length) {
+      return "";
     }
     return `${prefix}${value}`;
   }
@@ -198,7 +210,13 @@ export default class PermissionService {
    * @param setgid sets the group executable flag.
    * @param stickybit sets the sticky bit.
    */
-  private computeNumericalSpecialPermissions(setuid: boolean, setgid: boolean, stickybit: boolean): number {
-    return this.binaryToNumber(this.arrayToString([Number(setuid), Number(setgid), Number(stickybit)]))
+  private computeNumericalSpecialPermissions(
+    setuid: boolean,
+    setgid: boolean,
+    stickybit: boolean
+  ): number {
+    return this.binaryToNumber(
+      this.arrayToString([Number(setuid), Number(setgid), Number(stickybit)])
+    );
   }
 }
