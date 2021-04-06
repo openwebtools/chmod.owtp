@@ -11,10 +11,10 @@ import {
   VStack,
   Text,
   SimpleGrid,
-  CheckboxGroup,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
+import CheckboxGroupWrapper from "../components/CheckboxGroupWrapper";
 import Layout from "../components/Layout";
 import PermissionDisplay from "../components/PermissionDisplay";
 import ToggleButton from "../components/ToggleButton";
@@ -133,113 +133,107 @@ const IndexPage = () => {
             </Th>
           </Tr>
         </Thead>
-        <Tbody>
-          <Tr>
-            <Td>
-              <Center>Read</Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.owner[0])}
-                  name="owner"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 0)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.group[0])}
-                  name="group"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 0)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.all[0])}
-                  name="all"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 0)}
-                ></Checkbox>
-              </Center>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>
-              <Center>Write</Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.owner[1])}
-                  name="owner"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 1)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.group[1])}
-                  name="group"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 1)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.all[1])}
-                  name="all"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 1)}
-                ></Checkbox>
-              </Center>
-            </Td>
-          </Tr>
-          <Tr>
-            <Td>
-              <Center>Update</Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.owner[2])}
-                  name="owner"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 2)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.group[2])}
-                  name="group"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 2)}
-                ></Checkbox>
-              </Center>
-            </Td>
-            <Td>
-              <Center>
-                <Checkbox
-                  isChecked={Boolean(perms.all[2])}
-                  name="all"
-                  size="lg"
-                  onChange={(e) => handlePermChange(e, 2)}
-                ></Checkbox>
-              </Center>
-            </Td>
-          </Tr>
-        </Tbody>
+
+        <CheckboxGroupWrapper size="lg">
+          <Tbody>
+            <Tr>
+              <Td>
+                <Center>Read</Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.owner[0])}
+                    name="owner"
+                    onChange={(e) => handlePermChange(e, 0)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.group[0])}
+                    name="group"
+                    onChange={(e) => handlePermChange(e, 0)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.all[0])}
+                    name="all"
+                    onChange={(e) => handlePermChange(e, 0)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Center>Write</Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.owner[1])}
+                    name="owner"
+                    onChange={(e) => handlePermChange(e, 1)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.group[1])}
+                    name="group"
+                    onChange={(e) => handlePermChange(e, 1)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.all[1])}
+                    name="all"
+                    onChange={(e) => handlePermChange(e, 1)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <Center>Update</Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.owner[2])}
+                    name="owner"
+                    onChange={(e) => handlePermChange(e, 2)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.group[2])}
+                    name="group"
+                    onChange={(e) => handlePermChange(e, 2)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+              <Td>
+                <Center>
+                  <Checkbox
+                    isChecked={Boolean(perms.all[2])}
+                    name="all"
+                    onChange={(e) => handlePermChange(e, 2)}
+                  ></Checkbox>
+                </Center>
+              </Td>
+            </Tr>
+          </Tbody>
+        </CheckboxGroupWrapper>
       </Table>
       <Center mt={8} p={4}>
         <PermissionDisplay
@@ -251,7 +245,7 @@ const IndexPage = () => {
         <VStack align="center">
           <Text>Special Modes</Text>
           <VStack align="left">
-            <CheckboxGroup size="lg">
+            <CheckboxGroupWrapper size="lg">
               <Checkbox
                 isChecked={perms.setuid}
                 onChange={handleModeChange}
@@ -273,13 +267,13 @@ const IndexPage = () => {
               >
                 stickybit
               </Checkbox>
-            </CheckboxGroup>
+            </CheckboxGroupWrapper>
           </VStack>
         </VStack>
         <VStack>
           <Text>File Options</Text>
           <VStack align="left">
-            <CheckboxGroup size="lg" colorScheme="blue">
+            <CheckboxGroupWrapper size="lg">
               <Checkbox
                 isChecked={perms.fileOptions.folderOptions.recursive}
                 onChange={handleRecursionChange}
@@ -301,7 +295,7 @@ const IndexPage = () => {
               >
                 File Reference
               </Checkbox>
-            </CheckboxGroup>
+            </CheckboxGroupWrapper>
           </VStack>
         </VStack>
       </SimpleGrid>
