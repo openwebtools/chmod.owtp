@@ -22,7 +22,7 @@
   "homepage": "https://github.com/openwebtools/chmod.owtp#readme",
   "dependencies": {
     "@chakra-ui/icons": "^1.0.8",
-    "@chakra-ui/react": "^1.4.2",
+    "@chakra-ui/react": "^1.5.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@mdx-js/loader": "^1.6.22",
