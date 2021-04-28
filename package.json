@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/openwebtools/chmod.owtp#readme",
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.8",
+    "@chakra-ui/icons": "^1.0.11",
     "@chakra-ui/react": "^1.4.2",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.8",
-    "framer-motion": "^4.1.2",
+    "framer-motion": "^4.1.9",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
